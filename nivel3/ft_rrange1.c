@@ -29,63 +29,16 @@ Examples:
 
 #include <stdlib.h>
 
-int *ft_rrange(int start, int end)
-{
-    int size;
-    int *range;
-    int i = 0;
-
-    if (start > end)
-        size = start - end + 1;
-    else
-        size = end - start + 1;
-    
-    range = malloc(sizeof(int) * size);
-    if (!range)
-        return (NULL);
-    
-    while (i < size)
-    {
-        range[i] = end;
-        if (end < start)
-            end++;
-        else
-            end--;
-        i++;
-    }
-    return (range);
-}
-
-opcion2
-
-int     *ft_range(int start, int end)
+int     *ft_rrange(int start, int end)
 {
     int len;
-    int *result;
     int i = 0;
+    int result;
 
-    if (start <= end)
-        len = (end - start) + 1;
-    else
-        len = (start - end) + 1;
+    len = end - start + 1;
     result = malloc(sizeof(int) * len);
-    if (!result)
+    if (!resutl)
         return (NULL);
-    if (start <= end)
-    {
-        while(i < len)
-        {
-            result[i] = end - i;
-            i++;
-        }
-    }
+    if (end >= start)
     else
-    {
-        while(i < len)
-        {
-            result[i] = end + i;
-            i++;
-        }
-    }
-    return (result);
 }
