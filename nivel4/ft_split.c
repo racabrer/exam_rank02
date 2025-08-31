@@ -27,3 +27,58 @@ Delimitadores múltiples: Espacios, tabs,
 saltos de línea, inicio y final de cadena.
 */
 
+#include <stdlib.h>
+
+char	*ft_strncpy(char *s1, char *s2, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n && s2[i])
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+	s1[i] = '\0';
+	return (s1);
+}
+
+char	**ft_split(char *str)
+{
+	char	**out;
+	int		word_count;
+	int		new_word;
+	int		i;
+	int		j;
+
+	word_count = 0;
+	new_word = 0;
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+			i++;
+		if (str[i])
+			word_count++;
+		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+			i++;
+	}
+	i = 0;
+	out = (char **)malloc(sizeof(char *) * (word_count + 1));
+	while (str[i])
+	{
+		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+			i++;
+		new_word = i;
+		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+			i++;
+		if (i > new_word)
+		{
+			out[j] = (char *)malloc(sizeof(char) * ((i - new_word) + 1));
+			ft_strncpy(out[j++], &str[new_word], i - new_word);
+		}
+	}
+	out[j] = NULL;
+	return (out);
+}
