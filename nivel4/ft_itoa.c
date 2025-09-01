@@ -68,6 +68,7 @@ char	*ft_itoa(int nbr)
     if (n < 0)
     {
         str[0] = '-';
+        n = -n;
     }
     else
     {
