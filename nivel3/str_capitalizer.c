@@ -42,6 +42,10 @@ int ft_isletter(char c)
 
 int main(int argc, char **argv)
 {
+    /*
+    j se usa para recorrer los argumentos en argv, es el índice de los argumentos.
+    i se usa para recorrer los caracteres dentro de cada argumento en argv[j].
+    */
     int i; 
     int j;
     int new_word;
@@ -53,7 +57,7 @@ int main(int argc, char **argv)
     }
 
     j = 1;
-    while (j < argc)
+    while (j < argc) //Cuando hay más argumentos que el nombre del programa, entra
     {
         i = 0;
         new_word = 1;
@@ -82,3 +86,13 @@ int main(int argc, char **argv)
 
     return (0);
 }
+
+/*
+Hay que pensar en que te pueden pasar uno o más argumentos, por eso argv[j][i]
+Declaramos tres variables, dos son iteradores y la otra una flag
+Comprobamos el número de argumentos que en este caso tiene que ser al menos 2
+j empieza en 1 porque argv como mínimo será 1
+Mientras que j sea menor que argc, entramos 
+
+
+*/
