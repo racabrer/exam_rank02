@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 			flag = start;
 			while(start <= end)
 			{
-				write (1, &argv[1][start],1);
+				write (1, &argv[1][start], 1);
 				start++;
 			}
 			if (flag !=0)
