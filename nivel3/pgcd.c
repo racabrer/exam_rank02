@@ -54,3 +54,25 @@ int main (int argc, char **argv)
     printf("\n");
     return(0);
 }
+
+/*
+Comprobamos el número de argumentos
+Declaramos dos variables de tipo int. num1 y num2.
+Convertimos las variables con atoi pero es importante que lo hagamos dentro
+de la comprobación del número de argumentos.
+Si ambos números son mayores que 0
+    - Mientras que no sean iguales
+        Si num1 es mayor que num2
+            num1 = num1 - num2
+        Sino
+            num2 = num2 - num1
+     imprimimos con print num1.
+    \n
+    fin del programa
+
+    ** ACLARACIÓN RANDOM **
+
+    En este caso, imprimimos n1 pero podríamos poner n2 y el resultado sería el mismo.
+    Ambos números son iguales al MCD.
+    
+*/
