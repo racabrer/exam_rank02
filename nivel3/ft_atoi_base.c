@@ -53,15 +53,16 @@ función ft_atoi_base(str, base):
 
 int ft_isspace(char c)
 {
-    return (c == ' ' || c == '\t');
+    return(c == ' ' || c == '\t');
 }
 
-int ft_isvalid (int ch, int baselen)
+int ft_ishexa(int ch, int base_len)
 {
-    if ((ch >= 48 && c <= 57) || (baselen > 10 && ((ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F'))))
+    if ((ch >= '0' && ch <= '9') || (base_len > 10 && ((ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F'))))
         return (1);
-    else 
+    else
         return (0);
+    
 }
 
 int	ft_atoi_base(const char *str, int str_base)
@@ -70,21 +71,19 @@ int	ft_atoi_base(const char *str, int str_base)
     int result = 0;
     int sign = 1;
 
-    if (str_base < 2 || str_base > 16)
-        return (0);
     while(ft_isspace(str[i]))
         i++;
-    if (str[i] == '+' || str[i] == '-')
+    while(str[i] == '+' || str[i] == '-')
     {
         if (str[i] == '-')
         {
-            sign = - 1;
+            sign = -1;
             i++;
         }
         else 
             i++;
     }
-    while (str[i] && ft_isvalid(str[i], str_base))
+    while(str[i] && ft_ishexa(str[i], str_base))
     {
         result *= str_base;
         if (str[i] >= '0' && str[i] <= '9')
@@ -96,47 +95,5 @@ int	ft_atoi_base(const char *str, int str_base)
         i++;
     }
     return (result * sign);
+
 }
-
-
-// Another version 
-
-int ft_isspace (char c)
-{
-    return (c == ' ' || c == '\t');
-}
-
-int	ft_atoi_base(const char *str, int str_base)
-{
-    int result = 0;
-    int sign = 1;
-    int i = 0;
-    int valor = 0;
-
-    while (ft_isspace(str[i]))
-        i++;
-    if (str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-    while ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'a' && str[i] <= 'f') ||
-        (str[i] >= 'A' && str[i] <= 'F'))
-    {
-        if (str[i] >= '0' && str[i] <= '9')
-            valor = str[i] - '0';
-        else if (str[i] >= 'a' && str[i] <= 'f') 
-            valor  = str[i] - 'a' + 10;
-        else if (str[i] >= 'A' && str[i] <= 'F')
-            valor = str[i] - 'A' + 10;
-        else 
-            break;
-        if (valor >= str_base)
-            break;
-        result = result * str_base + valor;
-        i++;
-    }
-    return (result * sign);
-}
-
