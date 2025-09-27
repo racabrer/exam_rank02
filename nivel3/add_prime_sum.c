@@ -25,69 +25,84 @@ $>
 
 #include <unistd.h>
 
-void ft_putnbr(int nb)
+int ft_isspace(char c)
 {
-    char c;
-    if (nb >= 10)
-        ft_putnbr(nb / 10);
-    c = nb % 10 + '0';
-    write(1, &c, 1);
+    return (c == ' '|| c == '\t');
 }
 
 int ft_atoi(char *str)
 {
     int i = 0;
     int result = 0;
+    int sign = 1;
 
-    while (str[i] >= '0' && str[i] <= '9')
+    while(ft_isspace(str[i]))
+        i++;
+    while(str[i] == '+' || str[i] == '-')
     {
-        result = result * 10 + (str[i] - '0');
+        if (str[i] == '-')
+            sign = -1;
         i++;
     }
-    return result;
+    while(str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + (str[i] - 48);
+        i++;
+    }
+    return (sign * result);
+}
+
+void ft_putnbr(int nb)
+{
+    char c;
+
+    if (nb >= 10)
+        ft_putnbr(nb / 10);
+    c = nb % 10 + 48;
+    write(1, &c, 1);
 }
 
 int is_prime(int n)
 {
     int i = 2;
-    if (n < 2)
-        return 0;
+
+    if (n <= 1)
+        return (0);
     while (i * i <= n)
     {
         if (n % i == 0)
-            return 0;
+            return (0);
         i++;
     }
-    return 1;
+    return(1);
 }
 
 int main(int argc, char **argv)
 {
+    int num; 
     int i = 2;
     int sum = 0;
-    int num;
 
-    if (argc != 2)
+    if (argc == 2)
     {
-        write(1, "0\n", 2);
-        return 0;
+        num = ft_atoi(argv[1]);
+        if (num <= 0)
+        {
+            write(1, "0", 1);
+            return (0);
+        }
+        while(i <= num)
+        {
+            if (is_prime(i))
+                sum += i;
+            i++;
+        }
+        ft_putnbr(sum);
+    write(1, "\n", 1);        
     }
-
-    num = ft_atoi(argv[1]);
-    if (num <= 0)
+    else
     {
-        write(1, "0\n", 2);
-        return 0;
+    write(1, "0\n", 2);
+    return (0);
     }
-
-    while (i <= num)
-    {
-        if (is_prime(i))
-            sum += i;
-        i++;
-    }
-
-    ft_putnbr(sum);
-    write(1, "\n", 1);
-    return 0;
 }
