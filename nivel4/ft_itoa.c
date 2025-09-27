@@ -34,6 +34,22 @@ La memoria debe ser reservada con malloc.
         Agregar el signo negativo si corresponde.
     Terminar con '\0'.
 
+EXPLICACIÓN POR FUNCIONES:
+    count len:
+    len: contador que almacenará la cantidad de caracteres
+    n: se guarda nbr como long para evitar errores al manejar INT_MIN
+    Cuando convertimos un número con itoa, necesitamos saber el número de caracteres que tiene 
+    eso incluye los signos si los tiene.
+    Si n es menor o iigual a cero entonces es o cero, que en ese caso es un caracter
+    o negativo que en ese caso hay que añadir el signo menos 
+    mientras que n sea distinto a cero dividimos n entre 10 y aumentamos len.
+    Devolvemos len. 
+
+    ft_itoa:
+
+    
+
+
 */
 #include <stdlib.h>
 
@@ -83,6 +99,7 @@ char	*ft_itoa(int nbr)
     }
     return (str);
 }
+
 
 
 /*

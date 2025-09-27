@@ -30,106 +30,55 @@ $
 $>
 */
 
-/*
 #include <unistd.h>
 
-int main (int ac, char **av)
+int ft_isspace(char c)
 {
-    int i = 0;
-    int printed = 0;
-
-    if (ac == 2)
-    {
-        // Saltar espacios iniciales
-        while (av[1][i] == 32 || av[1][i] == 9)
-            i++;
-        int start = i;
-
-        // Buscar el fin de la primera palabra
-        while (av[1][i] && av[1][i] != 32 && av[1][i] != 9)
-            i++;
-        int end = i;
-
-        // Saltar espacios después de la primera palabra
-        while (av[1][i] == 32 || av[1][i] == 9)
-            i++;
-
-        // Imprimir las demás palabras
-        while (av[1][i])
-        {
-            while (av[1][i] && av[1][i] != 32 && av[1][i] != 9)
-            {
-                write(1, &av[1][i], 1);
-                i++;
-                printed = 1;
-            }
-
-            // Saltar espacios entre palabras
-            while (av[1][i] == 32 || av[1][i] == 9)
-                i++;
-
-            if (av[1][i] && printed)
-                write(1, " ", 1);
-        }
-
-        // Solo imprimir espacio si ya hubo otra palabra antes
-        if (start < end)
-        {
-            if (printed)
-                write(1, " ", 1);
-            while (start < end)
-                write(1, &av[1][start++], 1);
-        }
-    }
-    write(1, "\n", 1);
-    return 0;
+    return (c == ' '|| c == '\t');
 }
-
-*/
-
-#include <unistd.h>
 
 int main (int argc, char **argv)
 {
     int i = 0;
-    int printed;
+    int printed = 0;
+    int start = 0;
+    int end = 0;
 
-    if (argc == 2)
+    if (argc > 1)
     {
-        while (argv[1][i] == ' ' || argv[1][i] == '\t')
+        while(ft_isspace(argv[1][i]))
             i++;
-        int start = i;
-        while (argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
+        start = i;
+        while(argv[1][i] && !ft_isspace(argv[1][i]))
             i++;
-        int end = i;
-        while (argv[1][i] == ' ' || argv[1][i] == '\t')
+        end = i;
+        while(argv[1][i] && ft_isspace(argv[1][i]))
             i++;
         while(argv[1][i])
         {
-            while (argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
+            while(argv[1][i] && !ft_isspace(argv[1][i]))
             {
                 write(1, &argv[1][i], 1);
                 i++;
                 printed = 1;
             }
-            while (argv[1][i] == ' ' || argv[1][i] == '\t')
+            while(argv[1][i] && ft_isspace(argv[1][i]))
                 i++;
-            if (argv[1][i] && printed)
-                write(1, &argv[1][i], 1);
+            if (argv[1][i])
+                write(1, " ", 1);
         }
+        if (printed)
+            write(1, " ", 1);
+
         while (start < end)
         {
-            if (printed)
-                write(1, " ", 1);
-            while(start < end)
-                write(1, &argv[1][start++], 1);
+            write(1, &argv[1][start], 1);
+            start++;
         }
     }
     write(1, "\n", 1);
-    return (0);
+    return(0);
 }
-
-
 
 
 
