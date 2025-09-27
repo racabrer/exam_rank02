@@ -41,7 +41,7 @@ int main(int argc, char **argv)
         if (argv[2][1] != '\0' || argv[3][1] != '\0')
         {
             write(1, "\n", 1);
-            return (1)
+            return (1);
         }
         while (argv[1][i])
         {
@@ -54,3 +54,16 @@ int main(int argc, char **argv)
     write(1, "\n", 1);
     return(0);
 }
+
+/*
+Comprobamos el número de argumentos 
+comprobamos que la posición 1 de argv[2] y argv[3] sea '\0' porque solo pueden contener un caracter.
+en esta comprobación imprimimos un salto de línea y finaliza el programa
+Recorremos el argv[1][i]
+    Mientras que argc[1] sea igual a argv[2] 
+    igualamos el valor de argv[1] en argv[3]
+    imprimimos argv[1][i]
+    avanzamos en i.
+\n
+Fin del programa
+*/
