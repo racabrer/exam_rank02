@@ -44,3 +44,11 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return(0);
 }
+
+
+/*
+    Esta función comprueba si la letra es mayúscula o es minúscula y las cambia
+    Si es mayúscula, le suma 32, si es minúscula le resta 32 e imprime
+    Salto de línea
+    Fin del programa.
+*/
