@@ -29,3 +29,11 @@ void	print_bits(unsigned char octet)
 		write (1, &bit, 1);
 	}
 }
+
+/*
+	Declaramos dos variables de tipo unsigned una tipo int(i) y la otra de tipo char (bit)
+	Inicializamos las variables, int = 8 y bit = 0;
+	Mientras que i va disminuyendo 
+		Extraemos un bit específico del valor octet y convertimos ese caracter a 0 ó 1.
+		Imprimimos con write
+*/

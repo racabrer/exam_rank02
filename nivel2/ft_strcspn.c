@@ -21,11 +21,14 @@ Esta función compara s con reject, si hay coincidencia, devuelve el tamaño
 de lo que se ha recorrido de s hasta la coincidencia
 */
 
+#include <stddef.h>
+
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-    int i = 0;
-    int j;
+    size_t i; 
+    size_t j;
 
+    i = 0;
     while (s[i])
     { 
         j = 0;
@@ -39,3 +42,17 @@ size_t	ft_strcspn(const char *s, const char *reject)
     }
     return (i);
 }
+
+
+/*
+    Esta función busca una coincidencia de *s en *reject.
+    Recorremos la cadena *s con el iterador i.
+        -Mientras que recorremos la cadena s[i], empezamos a recorrer reject con el iterador j.
+            -Si encuentra una coincidencia, devuelve i que es la posición en la que han coincidido.
+        Avanza en j (j++)
+    Avanza en i (i++)
+    Si no ha encontrado una coincidencia devuelve i que es el tamaño de *s
+
+    *Dato importante, tenemos que añadir #include <stddef.h> porque la función utiliza size_t*
+
+*/
