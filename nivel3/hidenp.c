@@ -48,3 +48,20 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+
+/*
+    Esta función busca si s1 está contenida en s2. Si esto es así, devuelve 1. Sino, devuelve 0.
+
+    Declaramos dos variables i y j, los inicializamos a cero, utilizamos i para recorrer argv[1] 
+    utilizamos j para recorre argv[2]. 
+
+    comenzamos recorriendo argv[2]
+        Si argv[1][i] existe y argv[1][i] y argv[2][i] son iguales
+            Avanzamos en i (i++)
+        Avanzamos en j (j++)
+    Si argv[1][i] es igual al diablito ('\0'), es decir si argv[1] ha llegado hasta el final, escribimos 1
+    En caso contrario, escribimos 0
+    Salto de línea
+    Fin del programa
+*/
