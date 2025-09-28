@@ -80,7 +80,10 @@ int main (int argc, char **argv)
     return(0);
 }
 
-
+/*
+los fallos que he tenido en esta función es en el número de argumentos 
+y en la parte final, la comprobación de la flag printed va por separado del while (start < end)
+*/
 
 
 
