@@ -84,7 +84,7 @@ int *ft_range(int start, int end)
     return (range);
 }
 
-
+/*
 opcion2
 
 #include <stdlib.h>
@@ -121,4 +121,68 @@ int     *ft_range(int start, int end)
     return (result);
 }
 
+opcion3
 
+#include <stdlib.h>
+
+int     *ft_range(int start, int end)
+{
+    int *range;
+    int size = 0;
+    int i = 0;
+    int current_value = 0;
+
+    if (start <= end)
+    {
+        size = end - start + 1;
+    }
+    else 
+    {
+        size = start - end + 1;
+    }
+
+    range = malloc(sizeof(int) * size + 1);
+    if (!range)
+        return NULL;
+
+    
+    if (start <= end)
+    {
+        current_value = start;
+        while (current_value <= end)
+        {
+            range[i] = current_value;
+            i++;
+            current_value++;
+        }
+    }
+    else
+    {
+        current_value = start;
+        while (current_value >= end)
+        {
+            range[i] = current_value;
+            i++;
+            current_value--;            
+        }
+    }
+    return (range);
+} */
+
+/*
+    Esta función recibe dos enteros, start y end 
+    devuelve un puntero a un arreglo de enteros que contiene todos los valores enteros consecutivos
+    desde start hasta end, ambos inclusive.
+
+    1. Calculamos el tamaño del array: 
+        valor absoluto de (end - start) + 1.
+    +1 es porque queremos incluir los extremos (start y end).
+
+    2. Reservamos memoria para un array de enteros con malloc
+    3. Comprobación de malloc
+    4. Llenamos el array con los valores. 
+        Si start <= end, llenamos el arreglo con valores crecientes.
+        Si start > end, llenamos el arreglo con valores decrecientes.
+        igualamos arrai[i] a start - 1
+    5. Devolver el puntero que apunta al array que acabamos de crear
+*/
