@@ -24,3 +24,12 @@ char    *ft_strcpy(char *s1, char *s2)
     s1[i] = '\0';
     return(s1);
 }
+
+/*
+Esta función copia s2 en s1.
+Mientras que s2 exista
+    Copio carácter por carácter s2 en s1
+    Avanzo en i
+Añado el '\0' al final
+Devuelvo s1 que es la copia de s2
+*/
