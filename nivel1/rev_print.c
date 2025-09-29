@@ -34,3 +34,13 @@ char *ft_rev_print(char *str)
     return (0);
 
 }*/
+
+/*
+    En el examen es distinto 
+    Recorremos la cadena hasta final y desde ahí retrocede
+    Mientras que i es mayor o igual a cero,
+        imprime str[i]
+        i--
+    Salto de línea
+    Devuelve la cadena.
+*/
