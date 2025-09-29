@@ -97,3 +97,36 @@ int	ft_atoi_base(const char *str, int str_base)
     return (result * sign);
 
 }
+
+
+/*
+    Esta función convierte una cadena de caracteres que está en una base específica a su valor en base 10.
+    La base puede ir de 2 a 16.
+    Creamos dos funciones auxiliares:
+        Una de ellas es para gestionar los espacios 
+        la otra para gestionar 
+        tanto si es un dígito que abarca de 0 a 9 o si está entre 'a' - 'f' o si está entre 'A' y 'F'
+    La función principal : int	ft_atoi_base(const char *str, int str_base)
+    es muy similar a atoi, pero en este caso, gestiona la base.
+
+    Declaramos tres variables:
+        i -> iterador para recorrer str[i]. Lo inicializamos a cero
+        sign -> para manejar el signo (negativo o positivo). Lo inicializamos a uno
+        result -> para almacenar el resultado. Lo inicializamos a cero.
+    Si hay espacios al principio, los ignoramos
+    Gestionamos el signo:
+    Mientras que sea '+' o '-' 
+        Si es '-'
+            sign = -1
+        avanzamos en i (i++)
+    Mientras que exista str[i] y (llamamos a la función is_hexa para comprobar la base)
+        Multiplicamos el resultado por la base.
+        Si str[i] está entre '0' y '9' 
+            result += str[i] - '0' || result += str[i] - 48
+        Si str[i] está entre 'a' y 'f'
+            result += str[i] - 'a' + 10
+        Si str[i] está entre 'A' y 'F'
+            result += str[i] - 'A' + 10  
+        Avanzamos en i (i++)
+    Devuelve result * sign
+*/
