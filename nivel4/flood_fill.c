@@ -107,3 +107,59 @@ void  flood_fill(char **tab, t_point size, t_point begin)
     target = tab[begin.y][begin.x];
     fill(tab, size, target, begin.y, begin.x);
 }
+
+
+/*
+Estructura t_point:
+    x: entero
+    y: entero
+
+Función fill(tab, size, target, row, col):
+    Si (row < 0 o row >= size.y) o (col < 0 o col >= size.x):
+        Salir (fuera de los límites)
+    Si (tab[row][col] != target):
+        Salir (no es parte de la zona a llenar)
+
+    Cambiar tab[row][col] a 'F'  (llenamos el punto actual)
+
+    Llamar a fill para los 4 puntos adyacentes:
+        fill(tab, size, target, row + 1, col)  (abajo)
+        fill(tab, size, target, row - 1, col)  (arriba)
+        fill(tab, size, target, row, col + 1)  (derecha)
+        fill(tab, size, target, row, col - 1)  (izquierda)
+
+Función flood_fill(tab, size, begin):
+    Si (begin.x < 0 o begin.x >= size.x) o (begin.y < 0 o begin.y >= size.y):
+        Salir (el punto inicial está fuera de los límites)
+
+    target = tab[begin.y][begin.x]  (el carácter en el punto de inicio)
+    Llamar a fill(tab, size, target, begin.y, begin.x)  (empezamos el llenado)
+
+*/
+
+/*
+	El objetivo de esta función es llenar una zona de caracteres dentro de una matriz bidimensional (char **)
+		char ** = char [][].
+	Comienza desde un punto inicial y va reemplazando los caracteres adyacentes (horizontales y verticales) con 'F'
+	El punto inicial es el target.
+
+		**********************************************************************************************************
+
+	Creamos una función auxiliar:
+	void fill (char ** tab, t_point size, char target, int row, int col)
+	Hacemos comprobaciones para ver que no desborda.
+
+		Si row o col < 0, o si el tamaño de row es mayor/igual que size.y o col es mayor/igual row
+		Si (tab[row][col] != target) -> sale
+		Vamos llenando el punto actual igualando tab[row][col] a 'F'
+		Utilizamos recursividad para recorrer todos los puntos: 
+	        fill(tab, size, target, row + 1, col)  (abajo)
+        	fill(tab, size, target, row - 1, col)  (arriba)
+        	fill(tab, size, target, row, col + 1)  (derecha)
+        	fill(tab, size, target, row, col - 1)  (izquierda)		
+	
+	Función flood_fill(tab, size, begin):
+		Declaramos una variable target (que va a ser el carácter del punto de inicio).
+		target ->> target = tab[begin.y][begin.x]
+		Comenzamos a rellenar llamando a fill(tab, size, target, begin.y, begin.x)
+*/
