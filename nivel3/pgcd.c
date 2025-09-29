@@ -56,12 +56,18 @@ int main (int argc, char **argv)
 }
 
 /*
+
+pgcd - es el máximo común divisor de dos números
+Que es el número más grande que divide ambos sin dejar resto.
+De las funciones permitidas, vamos a utilizar solamente dos: atoi y printf
+
+
 Comprobamos el número de argumentos
 Declaramos dos variables de tipo int. num1 y num2.
-Convertimos las variables con atoi pero es importante que lo hagamos dentro
-de la comprobación del número de argumentos.
+Convertimos las variables con atoi pero ***es importante que lo hagamos dentro
+de la comprobación del número de argumentos.***
 Si ambos números son mayores que 0
-    - Mientras que no sean iguales
+    - Mientras que los números no sean iguales
         Si num1 es mayor que num2
             num1 = num1 - num2
         Sino
@@ -73,6 +79,12 @@ Si ambos números son mayores que 0
     ** ACLARACIÓN RANDOM **
 
     En este caso, imprimimos n1 pero podríamos poner n2 y el resultado sería el mismo.
-    Ambos números son iguales al MCD.
-    
+    Ambos números son iguales al MCD, esto es debido al algoritmo que estamos usando.
+
+    Si number1 es mayor que number2, se le resta a number1 a number 2
+        -> number1 = number1 - number2
+    Si number2 es mayor que number1, se resta a number2, number1
+        -> number2 = number2 - number1
+    Esto continúa hasta que number1 == number2. 
+        En este punto ambos números son iguales y contienen el MCD de los dos números inciales.
 */
