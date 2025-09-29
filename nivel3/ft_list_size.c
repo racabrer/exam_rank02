@@ -37,3 +37,17 @@ int	ft_list_size(t_list *begin_list)
     }
     return i;
 }
+
+
+/*
+    Esta función calcula el tamaño de una lista enlazada, avanza por la lista desde el primer nodo
+    hasta que next llega a NULL. Tenemos un contador (i) que en cada iteración aumenta en 1, cuando llega al final, 
+    devuelve el tamaño de la lista.
+
+    paso a paso:
+    Declaramos una variable i (que será nuestro contador) y la inicializamos a cero
+    Mientras que exista begin_list 
+        igualamos begin_list a next. Es decir recorremos los nodos uno a uno
+        Aumentamos el contador (i++).
+    Devolvemos el contador, que es el tamaño de la lista
+*/
