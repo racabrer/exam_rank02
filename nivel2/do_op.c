@@ -52,3 +52,23 @@ int main(int argc, char **argv)
     printf("\n");
     return (0);
 }
+
+
+/*
+    Necesitamos crear un programa que recibe tres strings e identifica el símbolo de la operación que tiene que hacer,
+    la ejecuta y la imprime (es como una calculadora).
+
+    Creamos una variable i y la inicializamos a cero
+    Comprobamos el número de argumentos 
+    Si *argv[2] que representa el símbolo de la operación que tetenos que hacer es == a (añade símbolo), hace la operación 
+    que corresponda.
+        Imprimimos con printf en la misma línea que hacemos la operación.
+    Hacemos lo mismo para todas las operaciones posibles '+', '-', '/', '%', '*'
+    Imprimimos un salto de línea 
+    Fin del programa.
+
+    *cosas a tener en cuenta*
+        argv[2] -> va como *argv[2].
+        En la conversión con atoi(), necesitamos añadir & delante del argumento -> atoi(&argv[1][i]). También necesitamos el iterador.
+        Cuando pasamos los argumentos por terminal, necesitamos pasarlos como " " -> "2" "*" "4"
+*/
