@@ -44,3 +44,43 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+/*
+    OTRA VERSIÓN QUE TAMBIÉN PASA GRADEME 
+
+    int main (int argc, char **argv)
+    {
+        int i; 
+        i = 0;
+
+        if(argc == 2)
+        {
+            while(argv[1][i])
+            {
+                while (argv[1][i] >= 65 && argv[1][i] <= 90)
+                    argv[1][i] += 32;
+                while(argv[1][i] == '_')
+                {
+                    i++;
+                    argv[1][i] -= 32;
+                }
+                write(1, &argv[1][i], 1);
+                i++;
+            }
+        }
+        write(1, "\n", 1);
+        return(0);
+    }
+*/
+
+/*
+    Tenemos que pasar una cadena que está en formato "snake_case" a formato "lowerCamelCase"
+    Declaramos una variable i, que es el iterador con el que vamos a recorrer la cadena
+    Comprobamos el número de argumentos 
+    Mientras que haya alguna letra en mayúscula, la pasamos a minúscula
+    Mientras argv[1][i] sea igual a '_' 
+        Avanzamos una posición en i y convertimos la letra a mayúscula.
+    Escribimos argv
+    Avanzamos en i (i++)
+    Salto de línea
+    Fin del programa
+*/
