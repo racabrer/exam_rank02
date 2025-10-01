@@ -105,5 +105,24 @@ Devuelve start que está en el primer nodo
 Imprime 
 \n
 fin del programa
+
+Pasos (resumen):
+
+1. Guardamos el principio de la lista
+2. Mientras haya nodos para comparar
+3. Usamos la función cmp para saber si los dos números están ordenados
+    Si los dos números están mal ordenados (cmp devuelve 0)
+4. Intercambiamos los números si están mal ordenados.
+    Esto hace dos cosas:
+        4.1 Cambia los valores de los nodos.
+        4.2 Vuelve al principio de la lista para revisar todo otra vez,
+            porque después de cambiar algo, puede que se desordene algo antes.
+5. Si están bien ordenados, avanzamos al siguiente par.
+6. Devuelvo la lista ordenada. 
+    Devuelvo la lista desde el principio (que guardamos en start)
+
+
+
+
 */
 
