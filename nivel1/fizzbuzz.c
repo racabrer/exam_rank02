@@ -41,15 +41,16 @@ $>
 
 #include <unistd.h>
 
-void ft_putnbr(char nb)
+void ft_putnbr(int nb)
 {
     char c;
 
     if (nb >= 10)
         ft_putnbr(nb / 10);
-    c = nb % 10 + '0';
+    c = (nb % 10) + '0';
     write(1, &c, 1);
 }
+
 
 int main (int argc, char **argv)
 {
@@ -70,3 +71,19 @@ int main (int argc, char **argv)
     }
     return (0);
 }
+
+/*
+
+Usamos la función auxiliar putnbr para imprimir números 
+Creamos una variable "n" y la inicializamos a 1
+Mientras que n sea menor o igual a 100
+    - Si n es múltiplo de 3, imprime "fizz"
+    - Si n es múltiplo de 5, imprime "buzz"
+    - Si n es múltiplo de 3 y de 5, imprime "fizzbuzz"
+    - Sino, imprime el número que corresponda
+********IMPORTANTE********
+Escribir salto de línea
+Avanza en i.
+
+
+*/
