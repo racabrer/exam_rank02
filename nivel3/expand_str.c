@@ -60,3 +60,22 @@ int main (int argc, char **argv)
     write (1, "\n", 1);
     return (0);
 }
+
+
+/*
+    Esta función devuelve un string en el que hay tres espacios entre palabras.
+
+    - Declaramos dos variables i (iterador), space (flag) y las inicializamos a cero.
+    - Comprobamos el número de argumentos.
+        - Si hay espacios iniciales, los ignoramos
+    - Mientras argv[1]
+        - si hay un espacio, ponemos en 1 la flag space
+        - sino
+            -si la flag space está activa
+                - imprime un espacio
+            -Reinicia la flag space
+            -escribe argv
+        avanza en i (i++)
+    \n
+    Fin del programa return (0);     
+*/
