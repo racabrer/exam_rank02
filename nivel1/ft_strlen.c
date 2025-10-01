@@ -20,3 +20,9 @@ int	ft_strlen(char *str)
         i++;
     return (i);
 }
+
+/*
+Esta función calcula la longitud de un string.
+Recorre el string desde el principio hasta '\0' 
+Devuelve i que es el tamaño del string 
+*/
