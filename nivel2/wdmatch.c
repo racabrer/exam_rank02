@@ -29,8 +29,6 @@ $
 
 #include <unistd.h>
 
-#include <unistd.h>
-
 int main(int argc, char **argv)
 {
 	int i = 0;
@@ -56,3 +54,25 @@ int main(int argc, char **argv)
 	return (0);
 }
 // Tiene que encontrar s1 en s2. Completo, si no está en orden o no contiene TODO, sale
+
+/*
+Esta función recorre cada uno de los strings y comprueba carácer por carácer
+si s1 se encuentra dentro de s2 pero en el mismo orden 
+Si s1 está en s2, imprime s1. 
+Paso a paso:
+1. Decalaramos dos variables "i" y "j" que son los iteradores que vamos a usar para recorrer las cadenas
+2. Inicializamos a cero ambas variables.
+3. Comprobamos el número de argumentos.
+	4. Recorremos s1
+		5. Mientras s2 exista y sea distinto de s1, avanza en j (j++).
+			6. Si !s2 (no lo encuentra)
+				6.1 Imprime salto de línea 
+				6.2 Retorna 1
+			7. Avanza en i (i++)
+	8. (Fuera del while s1)
+		Imprime argv[1], importante:
+			- No imprimimos argv[1][i], como solemos hacer
+			----> write(1, argv[1], i); *****esto es así porque imprime los i primeros caracteres del string*******
+	9. \n
+	10. return (0).
+*/
