@@ -64,3 +64,22 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+/*
+    Creamos dos funciones auxiliares, una para gestionar los espacios y otra para calcular el tamaño del string
+    En la función principal:
+    - Creamos tres variables, una para iterar el string, otra para guardar el tamaño y otra para "acotar" el final de la cadena
+    - Comprobamos el número de argumentos 
+    - Calculamos el tamaño de la cadena -1. -1 por el '\0'
+    - Igualamos el valor de i a len
+    - Estamos en la última posición. Mientras que sea un espacio, retrocede en i.
+    - End = i (ahora estamos en la última posición real, en el último carácter)
+    - Mientras que no sea un espacio
+        - Retrocedemos en i (i--)
+    - Avanzamos en i (i++)
+        - Estamos en el primer carácter de la última palabra
+    - Mientras que i sea menor o igual al final de la palabra
+        imprime
+    \n
+    fin
+*/
