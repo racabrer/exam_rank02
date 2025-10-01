@@ -31,8 +31,6 @@ int ascending(int a, int b)
 {
 	return (a <= b);
 }
-
-
 **sort_list recorre una lista enlazada y ordena sus elementos usando una función de comparación (cmp).
 Si dos elementos no están en orden, intercambia sus valores (data) y vuelve al inicio.
 Así, garantiza que toda la lista quede ordenada según el criterio definido por cmp.
@@ -45,48 +43,67 @@ struct s_list
 	int     data;
 	t_list  *next;
 };
-
-
 */
 
-#include <unistd.h>
 
-int main (int argc, char **argv)
+typedef struct s_list t_list;
+
+struct s_list
 {
-    int i = 0;
-    int printed;
+	int     data;
+	t_list  *next;
+};
 
-    if (argc == 2)
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+{
+    t_list *start = lst;
+    int swap;
+
+    while(lst && lst->next)
     {
-        while (argv[1][i] == ' ' || argv[1][i] == '\t')
-            i++;
-        int start = i;
-        while (argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
-            i++;
-        int end = i;
-        while (argv[1][i] == ' ' || argv[1][i] == '\t')
-            i++;
-        while(argv[1][i])
+        if ((*cmp)(lst->data, lst->next->data) == 0)
         {
-            while (argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
-            {
-                write(1, &argv[1][i], 1);
-                i++;
-                printed = 1;
-            }
-            while (argv[1][i] == ' ' || argv[1][i] == '\t')
-                i++;
-            if (argv[1][i] && printed)
-                write(1, &argv[1][i], 1);
+            swap = lst->data;
+            lst->data = lst->next->data;
+            lst->next->data = swap;
+            lst = start;
         }
-        while (start < end)
-        {
-            if (printed)
-                write(1, " ", 1);
-            while(start < end)
-                write(1, &argv[1][start++], 1);
-        }
+        else
+            lst = lst->next;
     }
-    write(1, "\n", 1);
-    return (0);
+    return start;
 }
+
+/*
+Pseudocódigo:
+Función sort_list(lst, cmp):
+
+    Mientras la lista no esté completamente ordenada:
+        Inicializa un puntero actual al inicio de la lista
+        
+        Mientras actual y actual->next existen:
+            Si cmp(actual->data, actual->next->data) == 0:
+                // El orden no es correcto, así que intercambiamos los datos
+                Intercambia actual->data y actual->next->data
+            Mueve actual al siguiente nodo
+
+    Retorna lst (inicio de la lista).
+
+Paso a paso:
+
+Creamos dos variables:
+    "t_list *start" que la inicializamos a lst y otra variable de tipo int "swap" que nos va a ayudar a ordenar nuestra lista.
+Mientras que el nodo actual y el nodo siguiente exista, seguimos iterando.
+Llamamos a la función cmp con los valores de los nodos actuales.
+- Si cmp devuelve 0, el par está fuera de orden, así que hay que intercambiar.
+- Si cmp devuelve distinto de 0, están bien, no se hace nada.
+Intercambiamos los valores de lst y lst->next
+Después del intercambio, reiciciamos  el puntero lst al inicio de la lista para volver a revisar desde el principio
+Si los elementos están ordenados, avanza al siguiente par.
+Si terminamos de recorrer sin hacer ningún intercambio, la lista está ordenada
+Devuelve start que está en el primer nodo
+Imprime 
+\n
+fin del programa
+*/
+
