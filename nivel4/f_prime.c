@@ -33,37 +33,36 @@ $
 $> ./fprime 42 21 | cat -e
 $
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 
 int main (int argc, char **argv)
 {
-    int i = 2;
-    int number;
+    int n;
+    int factor;
+    int first = 1; // flag para controlar si imprimir '*' antes del factor
 
     if (argc == 2)
     {
-        number = atoi(argv[1]);
-        if (number == 1)
+        n = atoi(argv[1]);
+        if(n == 1)
         {
-            printf("%d", 1);
+            printf("1\n");
             return (0);
         }
-        while (number > 1)
+        factor = 2;
+        while(n > 1)
         {
-            if (number % i == 0)
+            if (n % factor == 0)
             {
-                printf("%d", 2);
-                number /= 2;
-                i++;
+                if (!first)
+                    printf("*");
+                printf("%d", factor);
+                n /= factor;
+                first = 0;
             }
-            else 
-            {
-                i += 2;
-            }
-            if (number > 1)
-                printf("%d", number);
+            else
+                factor++;
         }
     }
     printf("\n");
@@ -71,40 +70,26 @@ int main (int argc, char **argv)
 }
 
 /*
-Código corregido
-#include <stdio.h>
-#include <stdlib.h>
+Si número de argumentos != 2:
+    imprimir salto de línea
+    salir
 
-int main (int argc, char **argv)
-{
-    int i = 2;
-    int number;
+Convertir argv[1] a entero n (usando atoi)
 
-    if (argc == 2)
-    {
-        number = atoi(argv[1]);
-        if (number == 1)
-        {
-            printf("%d", 1);
-            return (0);
-        }
-        while (number > 1)
-        {
-            if (number % i == 0)
-            {
-                printf("%d", 2);
-                number /= 2;
-                i++;
-            }
-            else 
-            {
-                i += 2;
-            }
-            if (number > 1)
-                printf("%d", number);
-        }
-    }
-    printf("\n");
-    return (0);
-}
+Si n == 1:
+    imprimir "1\n"
+    salir
+
+factor = 2
+mientras n > 1:
+    si n divisible por factor:
+        comprobamos si la flag first está activada, 
+            si lo está, imprimimos * porque quiere decir que ya hemos impreso otro factor previamente
+        imprimir factor
+        dividir n por factor
+        si n > 1:
+            imprimir '*'
+    sino:
+        factor = factor + 1
+imprimir salto de línea
 */
