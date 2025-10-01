@@ -49,3 +49,19 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+
+/*
+    Esta función cambia cada carácter de una cadena por su opuesto.
+    Creamos una variable i para iterar y la inicializo a cero.
+    Mientras argv[1]
+    Si es mayúscula -> argv[1][i] = 90 - argv[1][i] + 65;
+        - Esto es porque a el valor ascii de Z le restamos el valor actual de argv[1][i] y le sumamos el valor de A
+            ej: 90 - 66 + 65 = 89 -> Y
+    Si el minúscula hago lo mismo pero con los valores que corresponden a la minúscula
+    Imprime 
+    Avanza en i
+    \n
+    Fin del programa 
+    
+    */
