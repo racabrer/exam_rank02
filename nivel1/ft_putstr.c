@@ -15,3 +15,10 @@ void	ft_putstr(char *str)
     return (0);    
 }
 */
+
+
+/*
+    Esta función escribe un string
+    Creamos una variable para iterar el string
+    Mientras exista str, lo recorremos y lo imprimimos con write.
+*/
