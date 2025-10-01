@@ -64,11 +64,6 @@ Mientras que j sea menor que argc (cuando hay más argumentos que el nombre del 
 */
 #include <unistd.h>
 
-int ft_isspace(char c)
-{
-    return (c == ' ' || c == '\t');
-}
-
 int ft_isletter(char c)
 {
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
