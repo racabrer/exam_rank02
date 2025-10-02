@@ -51,5 +51,6 @@ int main(int argc, char **argv)
 }
 
 /*
-
+    Recorre una cadena y para cada carácter lo intercambia por su posicion +1  
+    En el caso de z -> -25 porque cambia a la primera posición del abecedario en ascii
 */
