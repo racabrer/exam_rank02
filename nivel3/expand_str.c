@@ -60,11 +60,11 @@ int main (int argc, char **argv)
     write (1, "\n", 1);
     return (0);
 }
-
-
 /*
-    Esta función devuelve un string en el que hay tres espacios entre palabras.
 
+    Utilizamos una función auxiliar para gestionar los espacios.
+
+    Esta función devuelve un string en el que hay tres espacios entre palabras.
     - Declaramos dos variables i (iterador), space (flag) y las inicializamos a cero.
     - Comprobamos el número de argumentos.
         - Si hay espacios iniciales, los ignoramos
