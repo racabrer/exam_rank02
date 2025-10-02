@@ -66,6 +66,8 @@ char	**ft_split(char *str)
 	}
 	i = 0;
 	out = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!out)
+		return (NULL);
 	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -76,9 +78,65 @@ char	**ft_split(char *str)
 		if (i > new_word)
 		{
 			out[j] = (char *)malloc(sizeof(char) * ((i - new_word) + 1));
+			if (!out)
+				return (NULL);
 			ft_strncpy(out[j++], &str[new_word], i - new_word);
 		}
 	}
 	out[j] = NULL;
 	return (out);
 }
+
+
+/*
+	Creamos una función auxiliar ft_strncpy para copiar "n" caracteres de s2 a s1.
+	Declaramos una variable que es un iterador para recorrer las cadenas.
+	Mientras que no se hayan copiado n caracteres y el carácter actual de s2 no sea nulo ('\0)
+	se copian todos los caracteres de s2 a s1.
+	Mientras que i sea menor que n y s2[i] exista
+	Copia -> s1[o] = s2[i]
+	Esto garantiza uqe solo se copian hasta n caracteres y se detiene antes si s2 se acaba.
+	Añadimos '\0' al final de s1 para asegurarse que la cadena está bien terminada.
+	s1[i] = '\0';
+	return (s1) -> retorna un puntero al comienzo de s1.
+
+	FUNCIÓN PRINCIPAL:
+	char	**ft_split(char *str):
+	Declaramos 5 variables. 
+		int		word_count -> contador de palabras
+		int		new_word -> índice temporal que guarda dónde empieza la siguiente palabra
+		int		i -> índice para recorrer str
+		int		j -> índice para rellenar el array out
+		char 	**out -> array de strings || Guarda el resultado de todas las palabras separadas
+	Voy a dividir la función en dos bloques.
+
+	BLOQUE 1: Contamos las palabras
+
+	Recorremos str[i]
+		- Mientras que exista s1[i] y sea: " " || "\t" || "\n" -> avanza i (i++)
+		- Si str[i]
+			word_count++ -> Cuenta una palabra
+		- Mientras que str[i] exista y NO sea:  " " || "\t" || "\n" -> avanza i (i++)
+
+	BLOQUE 2:
+
+	Reiniciamos el iterador i.
+	Asignamos espacio al array out -> tamaño word_count + 1.
+	Recorremos de nuevo str[i]
+	Mientras exista str[i] y sea: " " || "\t" || "\n" 
+		-> i++
+		-> new_word = i -> 1ª posición de la siguiente palabra
+	Mientras exista str[i] y NO sea: " " || "\t" || "\n"
+		-> avanza en i (i++)
+	
+	Si (i > new_word)
+		-> Extraemos y copiamos una palabra desde el original str hasta un array de cadenas (out)
+		-> Reservamos memoria para la nueva cadena (i - new_word) es la cantidad 
+			de caracteres de la palabra + 1 (para '\0')
+		out[j] = (char *)malloc(sizeof(char) * (i - new_word) + 1)
+		-> Llamamos a la función strncpy -> se copian los caracteres de la palabra
+			desde str[new_word] hasta str[i - 1] dentro de out[j]
+			j++
+	out[j] = NULL -> se añade un NULL para marcar el fin del array
+	return out
+*/
