@@ -16,7 +16,6 @@ void	ft_putstr(char *str)
 }
 */
 
-
 /*
     Esta función escribe un string
     Creamos una variable para iterar el string
