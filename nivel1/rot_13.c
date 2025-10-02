@@ -19,3 +19,10 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return(0);
 }
+
+/*
+    Recorre una cadena y para cada carácter lo intercambia por su posicion + 13 o -13 
+    dependiendo de su posición en el abecedario.
+    Los 13 primeros tanto de mayúsculas como de minúscula +13,
+    Los 13 últimos tanto de mayúsculas como de minúscula -13
+*/
