@@ -79,3 +79,90 @@ int main(int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+
+/*
+otra versión:
+
+#include <unistd.h>
+
+void print_hex_number (int n)
+{
+    char c;
+
+    if (n >= 16)
+        print_hex_number(n / 16);
+    c = n % 16;
+    if (c < 10)
+        c = '0' + c;
+    else
+        c = 'a' + c - 10;
+    write(1, &c, 1);
+}
+
+
+int ft_atoi(char *str)
+{
+    int i = 0;
+    int result = 0;
+
+    while (str[i]>= '0' && str[i] <= '9')
+    {
+        result = result * 10 + (str[i] - 48);
+        i++;
+    }
+    return (result);
+}
+
+int main (int argc, char **argv)
+{
+    int num = 0;
+
+    if (argc == 2)
+    {
+        num = ft_atoi(argv[1]);
+        if (num == 0)
+            write(1, "0", 1);
+        else
+            print_hex_number(num);
+    } 
+    write(1, "\n", 1);
+    return (0);
+}
+*/
+
+
+/*
+
+void print_hex_number(n)
+    si n ≥ 16
+        llamar recursivamente a print_hex_number(n / 16)
+
+    calcular residuo = n % 16
+
+    si residuo < 10
+        escribir carácter ('0' + residuo)
+    si no
+        escribir carácter ('a' + residuo - 10)
+fin función
+
+ft_atoi -> hacer una función ft_atoi
+
+función main(argumentos)
+    si número de argumentos ≠ 1
+        escribir '\n'
+        salir del programa
+
+    convertir argumento[1] a número entero → num
+
+    si num == 0
+        escribir '0'
+    si no
+        llamar a función recursiva print_hex_number(num)
+
+    escribir '\n'
+fin función
+
+** en mi repo tengo un atoi completo pero no es necesario más que que funcione para si son dígitos.
+
+*/
