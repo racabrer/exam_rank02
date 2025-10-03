@@ -47,3 +47,19 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+/*
+Utilizamos una función auxiliar para gestionar los espacios
+En el main:
+- Declaramos una variable “i” para iterar nuestro argv
+- Comprobamos el número de argumentos
+    //Aquí vamos a “acotar” la primera palabra por sus
+    espacios y vamos a imprimir solo hasta el primer espacio
+    - Mientras sea un espacio (si hay espacios iniciales los ignoro)
+        i++
+    -Mientras que argv exista y que no sea un espacio
+        Escribimos la palabra
+        i++
+\n
+Fin del programa
+*/
