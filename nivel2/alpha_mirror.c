@@ -62,6 +62,6 @@ int main (int argc, char **argv)
     Imprime 
     Avanza en i
     \n
-    Fin del programa 
+    Fin del programa.
     
     */

@@ -46,3 +46,17 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return(0);
 }
+
+Este programa recibe un string en formato lowerCamelCase y lo convierte en formato snake_case
+-Declaramos una variable que vamos a usar para iterar nuestro string
+-Comprobamos el número de argumentos
+    -Recorremos argv
+        -Comprobamos si algún carácter está en mayúsculas
+            -Escribimos “_”
+            - Ponemos la letra en minúscula
+            -Escribimos argv
+        -Si no está en mayúsculas
+            -Escribe argv
+        i++;
+\n
+Fin del programa
