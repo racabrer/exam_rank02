@@ -65,3 +65,15 @@ int main ()
 
 }
 */
+
+/*
+Utilizamos dos funciones auxiliares, una es para gestionar los espacios y la otra para saber si es un dígito o no
+La función principal:
+Declaramos 3 variables:
+    Result = 0, sign = 1 e i = 0
+Si hay espacios iniciales, los saltamos
+Comprobamos el signo del número en caso de ser negativo, ponemos un - delante
+Comprobamos si es un dígito -> mientras que sea un dígito
+        Result = result * 10 + (str[i] – ‘0’)
+Devuelve el resultado multiplicado por el signo.
+*/
