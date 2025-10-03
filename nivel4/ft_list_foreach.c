@@ -36,3 +36,8 @@ void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
     (*f)(begin_list -> data);
     begin_list = begin_list->next;
 }
+
+/*
+Esta función recorre una lista enlazada y aplique una función f a cada elemento de la lista
+Aplicamos la función f a cada nodo de la lista
+*/

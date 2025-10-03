@@ -92,3 +92,27 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
+
+/*
+Este programa muestra la tabla de multiplicar del número que le pases por terminal
+Utilizamos dos funciones auxiliares:
+	atoi y putnbr
+En el main:
+	Declaramos tres variables:
+	num -> es el número por el que vamos a multiplicar
+	i -> iterador para recorrer los números del 1 al 9
+	res -> devuelve el resultado.
+Comprobamos el número de argumentos 
+comvertimos argv[1] con atoi 
+inicializamos i a 1
+mientras que i sea menor o igual a 9
+	escribe el número 
+	escribe el signo "x"
+	escribe el número
+	escribe "="
+	hace la operación correspondiente -> res = i * num
+	escribe el resultado
+	\n
+	avanza en i
+devuelve 0
+*/
