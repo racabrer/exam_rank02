@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     int flag;
 	int i = 0;
 
-	if(argc == 2)
+	if (argc == 2)
 	{
 		while(argv[1][i] != '\0')
 			i++;
@@ -63,3 +63,32 @@ int main(int argc, char **argv)
 	}
 	write(1, "\n", 1);
 }
+
+/*
+Este programa da la vuelta al orden de las palabras de un string.
+
+Declaramos 4 variables:
+	start y end -> se utiliza para acotar el principio y el final de cada palabra
+	flag -> se utiliza para saber si hay que escribir un espacio o no. 
+		Se activa cuando hemos impreso la palabra
+	i -> iterador para recorrer la cadena.
+Comprobamos el número de argumentos
+	Recorremos la cadena hasta el final
+	Mientras que i sea menor o igual a cero
+		Mientras que sea el final del string = '\0' ||
+		sea un espacio || sea un tab
+			retrocede
+		end = i establecemos la posición de end
+		Mientras que exita argv y NO sea un espacio o un tab
+			retrocede en i
+		start = i + 1 -> establecemos el valor de start
+		Igualamos la flag de start en i + 1
+		Mientras que start sea menor o igual que end
+			escribe el argumento desde start
+			start++
+		Si la flag no está activada
+			Escribe el espacio
+	\n
+
+	
+*/
