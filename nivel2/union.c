@@ -54,3 +54,29 @@ int main (int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+
+/*
+Este programa, recibe dos strings y sin que se repitan los caracteres,
+escribe los coincidentes y los no coincidentes tienen que mantener
+el orden del primer string para que sea válido
+Declaramos dos variables:
+i-> es un iterador para recorrer la primera cadena
+lookup[256] = {} 
+    -> esto representa una tabla que contiene todos los valores de ascii 
+    y va marcando los caracteres que ya han coincidido para que no se repitan
+-Comprobamos el número de argumentos
+    -Recorremos la primera cadena
+        Si argv existe y lookup no está activado
+            Escribe el carácter
+            Lookup = 1
+        Avanza en i (i++)
+    -Reiniciamos i
+Volvemos a hacer el mismo proceso pero en la segunda cadena
+    Mientras que el segundo string
+        Si el segundo string existe y existe y lookup no está activado
+            Escribe el carácter
+            Lookup = 1
+        i ++
+\n y fin del programa
+*/
