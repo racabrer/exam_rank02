@@ -42,3 +42,13 @@ int main(int argc, char **argv)
     write(1, "\n", 1);
     return (0);
 }
+
+
+/*
+Este programa nos devuelve el número de argumentos que le hemos pasado.
+Utilizamos una función auxiliar ft_putnbr para imprimir números
+- añadimos (void)argv; para que el programa no salte una alerta porque no estamos usando argv
+-si el número de argumentos es cero, devuelve cero
+-llamamos a la función putnbr y le pasamos argc -1 (-1 porque excluimos el nombre del programa)
+-\n y fin del programa
+*/
