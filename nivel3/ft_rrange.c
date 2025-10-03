@@ -89,3 +89,24 @@ int     *ft_range(int start, int end)
     }
     return (result);
 }
+
+
+/*
+La función rrange genera un array de enteros desde start hasta end
+en orden DECRECIENTE si start > end
+o en orden CRECIENTE si start <= end
+Declaramos tres variables:
+    Size ->tamaño del rango
+    *Range-> rango del array
+    i -> iterador
+-Comprobamos si el orden es ascendente o descendente y calculamos el tamaño del rango
+ en función de si start > end o si  start < end
+- Asignamos espacio a range con malloc y hacemos su comprobación
+Mientras que i sea menor que el tamaño del rango
+    -asignamos el valor actual de end en la posición i del array (range[i] = end)
+    - Si end < start ---> incrementa end
+    - sino ---à decrementa end
+    i ++
+Devuelve el rango.
+(esta es la explicación de la primera de las opciones de ft_rrange)
+*/
