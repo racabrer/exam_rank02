@@ -89,7 +89,7 @@ char	**ft_split(char *str)
 
 
 /*
-	Creamos una función auxiliar ft_strncpy para copiar "n" caracteres de s2 a s1.
+	Creamos una función auxiliar ft_strncpy (char	*ft_strncpy(char *s1, char *s2, int n)para copiar "n" caracteres de s2 a s1.
 	Declaramos una variable que es un iterador para recorrer las cadenas.
 	Mientras que no se hayan copiado n caracteres y el carácter actual de s2 no sea nulo ('\0)
 	se copian todos los caracteres de s2 a s1.
