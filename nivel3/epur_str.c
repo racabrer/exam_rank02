@@ -81,12 +81,11 @@ Saltamos los espacios al principio
 Recorremos el array
     Si es un espacio, marcamos la flag en 1
     Else 
-        -> Primer if (space)
+        -> if (space)
             write " "
-        -> Dentro del else pero fuera del if
-            space = 0
-            escribimos el carácter actual
-        i++;
-    \n
-    return 0;
+        space = 0
+        escribimos el carácter actual
+    i++;
+\n
+return 0;
 */
