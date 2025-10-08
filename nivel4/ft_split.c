@@ -66,8 +66,6 @@ char	**ft_split(char *str)
 	}
 	i = 0;
 	out = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (!out)
-		return (NULL);
 	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -78,8 +76,6 @@ char	**ft_split(char *str)
 		if (i > new_word)
 		{
 			out[j] = (char *)malloc(sizeof(char) * ((i - new_word) + 1));
-			if (!out)
-				return (NULL);
 			ft_strncpy(out[j++], &str[new_word], i - new_word);
 		}
 	}
@@ -121,7 +117,10 @@ char	**ft_split(char *str)
 	BLOQUE 2:
 
 	Reiniciamos el iterador i.
-	Asignamos espacio al array out -> tamaño word_count + 1.
+	Asignamos espacio al array out -> tamaño word_count + 1. 
+	En este malloc necesitamos hacer un casteo previo ->
+		out = (char **)malloc(sizeof(char *) * (word_count + 1));
+	Comprobamos malloc
 	Recorremos de nuevo str[i]
 	Mientras exista str[i] y sea: " " || "\t" || "\n" 
 		-> i++
@@ -137,6 +136,22 @@ char	**ft_split(char *str)
 		-> Llamamos a la función strncpy -> se copian los caracteres de la palabra
 			desde str[new_word] hasta str[i - 1] dentro de out[j]
 			j++
+			*******ACLARACIÓN**********
+			- out[j++] -> 
+			 	out es un arreglo de cadenas |
+			 	j++ indica que se accede a la posición j de out, 
+				y luego se incrementa j para la siguiente iteración.
+			 	Entonces, la cadena copiada se guarda en out[j].
+			- &str[new_word] -> 
+				str es la cadena original de entrada.
+				new_word es un índice donde comienza una nueva palabra en str.
+				Al hacer &str[new_word], estás pasando un puntero al inicio de esa palabra
+			- i - new_word ->
+				i es el índice actual en str.
+				new_word es donde comenzó la palabra.
+				Entonces i - new_word es la longitud de la palabra.
+				Se copia esa cantidad de caracteres.
+
 	out[j] = NULL -> se añade un NULL para marcar el fin del array
 	return out
 */

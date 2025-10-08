@@ -36,38 +36,54 @@ $
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (int argc, char **argv)
+int main(int argc, char *argv[])
 {
-    int n;
-    int factor;
-    int first = 1; // flag para controlar si imprimir '*' antes del factor
+    int num;
+    int i = 2;
 
-    if (argc == 2)
+    // Verificamos que se pase exactamente un argumento
+    if (argc != 2)
     {
-        n = atoi(argv[1]);
-        if(n == 1)
+        printf("\n");
+        return (1);
+    }
+
+    // Convertimos el argumento a número entero
+    num = atoi(argv[1]);
+
+    // Si el número es menor a 1, no se puede factorizar
+    if (num < 1)
+    {
+        printf("\n");
+        return (1);
+    }
+
+    // Caso especial: si es 1, solo imprimimos 1
+    if (num == 1)
+    {
+        printf("1\n");
+        return (0);
+    }
+
+    // Bucle principal: factorización
+    while (num > 1)
+    {
+        if (num % i == 0)
         {
-            printf("1\n");
-            return (0);
+            printf("%d", i);
+            num = num / i;
+            if (num > 1)
+                printf("*");
         }
-        factor = 2;
-        while(n > 1)
+        else
         {
-            if (n % factor == 0)
-            {
-                if (!first)
-                    printf("*");
-                printf("%d", factor);
-                n /= factor;
-                first = 0;
-            }
-            else
-                factor++;
+            i++;
         }
     }
     printf("\n");
     return (0);
 }
+
 
 /*
 Si número de argumentos != 2:
