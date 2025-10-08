@@ -67,7 +67,8 @@ int main ()
 */
 
 /*
-Utilizamos dos funciones auxiliares, una es para gestionar los espacios y la otra para saber si es un dígito o no
+Utilizamos dos funciones auxiliares, una es para gestionar los espacios
+y la otra para saber si es un dígito o no
 La función principal:
 Declaramos 3 variables:
     Result = 0, sign = 1 e i = 0

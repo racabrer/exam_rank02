@@ -8,21 +8,6 @@
 
     The function returns the largest number found in the array. If the array is empty, 
     the function returns 0.
-
-    Declaramos dos variables i y max
-    i -> iterador que recorre *tab
-    max -> guarda el valor máximo encontrado.
-
-    inicializo i a cero.
-    Comprobamos si tab contiene números si len, que es el tamaño de tab es cero, 
-    devuelve cero.
-    Igualamos max a tab[0] 
-    Hacemos un bucle que recorre tab, mientras que i (que empieza valiendo cero)
-    sea < que len (el tamaño de tab)
-    Compara cada número con el siguiente, si se cumple la condición de que tab sea mayor que len
-    igualamos el valor de max a tab[i] (que es el número más grande (de momento)).
-    avanzamos en i.
-    devolver max.
 */
 
 int		max(int* tab, unsigned int len)
@@ -54,4 +39,20 @@ int main(void)
     printf("El número máximo es: %d\n", result); // Mostramos el resultado
     return 0;
 }
+*/
+
+/*
+    Declaramos dos variables i y max
+    i -> iterador que recorre *tab
+    max -> guarda el valor máximo encontrado.
+
+    inicializo i a cero.
+    Comprobamos que tab contenga números, si len es cero, devuelve cero.
+    Inicializamos max en tab[0] (porque vamos a empezar a comparar desde la primera posición de tab)
+    Hacemos un bucle que recorre tab:
+        ->mientras que i (que empieza valiendo cero) sea < que len (el tamaño de tab)
+            Compara cada número con el siguiente, si tab[i] es mayor que len
+                igualamos el valor de max a tab[i] (que es el número más grande (de momento)).
+            avanzamos en i.
+    devuelvo max.
 */
