@@ -26,7 +26,18 @@ seconD tesT A littlE biT   moaR compleX$
    but... thiS iS noT thaT compleX$
      okay, thiS iS thE lasT 1239809147801 buT noT    thE leasT    T$
 $>
+    Esta función comprueba si son carácteres, si lo son convierte todas las letras a minúscula menos el 
+    último carácter de cada palabra. Puede aceptar más de un argumento.
+    RESUMEN PASO A PASO:
+    Recorre cada cadena que se pasa por argumento
+    Convierte todas las letras a minúscula
+    Detecta la última letra de cada palabra (basado en que lo que sigue no es una letra)
+    Convierte solo esa última letra a mayúscula
+    Imprime todo con saltos de línea
+
 */
+
+
 
 #include <unistd.h>
 
@@ -72,14 +83,41 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
-
 /*
-    Esta función comprueba si son carácteres, si lo son convierte todas las letras a minúscula menos el 
-    último carácter de cada palabra. Puede aceptar más de un argumento.
-    RESUMEN PASO A PASO:
-    Recorre cada cadena que se pasa por argumento
-    Convierte todas las letras a minúscula
-    Detecta la última letra de cada palabra (basado en que lo que sigue no es una letra)
-    Convierte solo esa última letra a mayúscula
-    Imprime todo con saltos de línea
+	Utilizamos una función auxiliar para gestionar los espacios.
+	En la función principal:
+	Declaramos 5 variables:
+		- char *str -> string actual que estamos procesando
+		- newc -> carácter actual, modificado(por si hay que cambiar mayúsculas o minúsculas)
+		- int i -> índice para recorrer los argumentos (empezamos en 1)
+		- int j -> índice para recorrer los caracteres de cada argumento
+		- int space -> flag para marcar si es un espacio
+
+	- Comprobamos el número de argumentos (porque puede recibir más de 1)
+		Si el número de argumentos es 1, devuelve salto de línea y 1
+	- Inicializamos i en 1.
+	- Mientras que i sea menor que argc
+		- inicializo j en cero
+		- inicializo str a argv[i] -> Tomamos el argumento actual (str = argv[i])
+		- Recorremos str con el iterador j -> str[j] 
+			- Guardo una copia del carácter actual del string str en la variable newc -> newc = str[j]
+
+									***ACLARACIÖN***
+
+		Esto se hace así porque queremos modificar ese carácter 
+		(convertirlo a minúscula, o a mayúscula si es la última letra de una palabra) 
+		Sin cambiar el string original.
+
+									****************
+			- Comprobamos si la siguiente posición es ' ' || '\t' || '\0'
+			- Comprobamos si str[j] es mayúscula o minúscula para cambiarlas 
+			- Imprimo &newc
+			- j++
+		- Escribo \n
+		- i++
+	devuelve \n
+ 
+		
+
 */
+

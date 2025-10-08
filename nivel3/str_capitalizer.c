@@ -69,6 +69,11 @@ int ft_isletter(char c)
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
+int ft_isspace (char c)
+{
+    return (c == ' ' || c == '\t');
+}
+
 int main(int argc, char **argv)
 {
     /*
