@@ -88,4 +88,23 @@ Recorremos el array
     i++;
 \n
 return 0;
+
+Creamos una función auxiliar para gestionar los espacios y \t
+
+Esta función imprime un string en el que las palabras están separadas solamente por un espacio.
+Para ello declaramos dos variables:
+    space -> es una flag para saber si hay espacio o no.
+    i -> lo utilizamos para iterar el string
+    Inicializamos ambas variables a cero
+    Recorremos el array
+        - Si es un espacio, 
+            - marcamos la flag en 1
+        - Sino
+            - Si la flag espacio está activada
+                - Escribimos el espacio
+            - Reiniciamos la flag a cero
+            - Escribimos el carácter actual (write(1, &argv[1][i], 1))
+        - i++
+    \n
+    return 0
 */
