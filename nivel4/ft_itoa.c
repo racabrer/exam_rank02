@@ -146,8 +146,8 @@ int main(void)
     que le pasamos en la función. Esto lo hacemos para que funcione con los números máximos y mínimos.
     Si n es menor o igual que cero, avanzamos en len (len ++)
     Mientras que n sea distinto de cero,
-        Contamos cuántos dígitos tiene nbr
-        Avanzamos en len (len++)
+        dividimos entre 10 (descartando el último dígito).
+        Cada división reduce un dígito, y aumentamos len en 1. (Contamos cuántos dígitos tiene nbr)
     Devolvemos len que es el tamaño del número.
 
     char	*ft_itoa(int nbr)
