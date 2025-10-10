@@ -85,16 +85,19 @@ unsigned int    lcm(unsigned int a, unsigned int b)
 /*
 Esta función nos devuelve el mínimo común múltiplo de dos números. 
 El mínimo común múltiplo de dos números es el número más pequeño que es divisible tanto por a como por b.
+
 Declaramos una variable  unsigned int “c”
--Comprobamos que los valores no sean cero, porque en este caso devuelve cero directamente,
- porque el lcm no está definido cuando uno de los números es cero.
-Inicializamos la variable c con el número mayor entra a y b, 
-el lcm no puede ser menor que el mayor de los dos números. 
-Empezamos con el valor más grande de a y b y buscamos el primer número que sea múltiplo de ambos.
--Usamos un bucle infinito while(1) que continúa hasta que encuentra el lcm
--comprobamos los múltiplos, verificando si c es divisible tanto por a como por b usando el operador % 
-(Si c % a == 0 y c % b == 0, significa que c es un múltiplo de ambos números, 
-y por lo tanto es el MCM. En ese caso, se devuelve c).
--Devolvemos c
+    - Comprobamos que los valores no sean cero, si alguno de los dos es cero, devuelve 0
+        (el lcm no está definido cuando uno de los números es cero.)
+    - Inicializamos la variable c con el número mayor entre a y b, 
+        el lcm no puede ser menor que el mayor de los dos números. 
+        (comparamos si (a > b || b > a) y el mayor se iguala a c)
+
+Empezamos con el valor más grande de a y b (c) y buscamos el primer número que sea múltiplo de ambos.
+    - Usamos un bucle infinito while(1) que continúa hasta que encuentra el lcm
+    - comprobamos los múltiplos, verificando si c es divisible tanto por a como por b usando el operador % 
+    (Si c % a == 0 y c % b == 0, significa que c es un múltiplo de ambos números, 
+    que por lo tanto es el MCM. En ese caso, se devuelve c).
+    - Devolvemos c
 c++
 */
