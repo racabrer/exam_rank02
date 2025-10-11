@@ -92,9 +92,13 @@ Función sort_list(lst, cmp):
 Paso a paso:
 
 Creamos dos variables:
-    "t_list *start" que la inicializamos a lst y otra variable de tipo int "swap" que nos va a ayudar a ordenar nuestra lista.
-Mientras que el nodo actual y el nodo siguiente exista, seguimos iterando.
+    t_list *start que la inicializamos a lst 
+        -> guarda la dirección del primer nodo para poder devolverla al final.
+    int swap -> que nos va a ayudar a ordenar nuestra lista.
+
+Mientras que el nodo actual (lst) y el nodo siguiente (lst->next) exista, seguimos iterando.
 Llamamos a la función cmp con los valores de los nodos actuales.
+    -> (*cmp)(lst->data, lst->next->data) == 0
 - Si cmp devuelve 0, el par está fuera de orden, así que hay que intercambiar.
 - Si cmp devuelve distinto de 0, están bien, no se hace nada.
 Intercambiamos los valores de lst y lst->next
