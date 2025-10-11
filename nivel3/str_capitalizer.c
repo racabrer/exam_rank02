@@ -126,6 +126,36 @@ Declaramos tres variables, dos son iteradores y la otra una flag
 Comprobamos el número de argumentos que en este caso tiene que ser al menos 2
 j empieza en 1 porque argv como mínimo será 1
 Mientras que j sea menor que argc, entramos 
+*/
 
+/*
+    Necesitamos poner en mayúsculas la primera letra de cada palabra
+    Podemos recibir más de un argumento.
+    Lo primero que hacemos es declarar tres variables:
+    j  = 1 -> para iterar en los distintos argumentos (empieza en 1 porque cero es el nombre del programa)
+    i  = 0-> para iterar dentro de cada argumento como tal
+    new_word  = 1-> flag para saber si tenemos que poner la letra en mayúsculas o no
+        empieza en 1 porque necesitamos que ponga en mayúsculas la primera letra del string
+    
+    Comprobamos el número de argumentos
+    if (argc < 2)
+    {
+        write(1, "\n", 1);
+        return (0);
+    }
 
+    while (j < argc) //Cuando hay más argumentos que el nombre del programa
+        - Si la letra está en mayúsculas, la pasamos a minúscula 
+        - Si la flag new_word está activada y es una letra, la ponemos en mayúsculas
+        - Escribimos argv[j][i]
+
+        ACTUALIZAMOS LA FLAG NEW_WORD
+        - Si es un espacio:
+            - new_word = 1
+        - Sino
+            - new_word = 0
+        Avanza en i
+    - Escribe un salto de línea
+    - Avanza en j
+- Fin del programa
 */
