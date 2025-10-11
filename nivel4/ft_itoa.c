@@ -140,33 +140,40 @@ int main(void)
 
     Creamos una función auxiliar que nos va a servir para calcular el tamaño del número que vamos a convertir
     int count_len (int nbr)
-    
     count_len:
-    Declaramos dos variables, len, para calcular el tamaño y otra de tipo long (n), que la igualamos al parámetro nbr
-    que le pasamos en la función. Esto lo hacemos para que funcione con los números máximos y mínimos.
-    Si n es menor o igual que cero, avanzamos en len (len ++)
-    Mientras que n sea distinto de cero,
-        dividimos entre 10 (descartando el último dígito).
-        Cada división reduce un dígito, y aumentamos len en 1. (Contamos cuántos dígitos tiene nbr)
-    Devolvemos len que es el tamaño del número.
+        - Declaramos dos variables:
+        int len -> para calcular el tamaño 
+        long (n), que la igualamos al parámetro nbr (esto lo hacemos para los máximos y los mínimos)
+ 
+        - Si n es menor o igual que cero, avanzamos en len (len ++)
+        - Mientras que n sea distinto de cero,
+            - dividimos entre 10 (descartando el último dígito).
+            ->Cada división reduce un dígito, y aumentamos len en 1. (Contamos cuántos dígitos tiene nbr)
+        - Devolvemos len que es el tamaño del número.
 
     char	*ft_itoa(int nbr)
-    Declaramos  3 variables, int len, long n y char *str
-    Llamamos a la función count_len y calculamos el tamaño de nbr.
-    Reservamos espacio con malloc para str con el tamaño de un char * len+1 (char porque la función devuelve char *)
-    + 1 es porque necesitamos dejar espacio para '\0'
-    Hacemos la comprobación de malloc
 
-    igualamos n a nbr (porque n es de tipo long y necesita poder gestionar los max y min)
-    Colocamos el '\0' al final de la cadena str[len]
-    Si n es menor a cero
-        añadimos el signo - en la posición 0 de str -> str[0]
-        n = -n
-    Si n es igual a cero
-        Se escribe cero en la primera posición str[0]
-    Mientras n sea mayor a cero
-    Convertimos los dígitos del número a caracteres, desde el final hacia el principio
-    (n % 10) obtenemos el último dígito + '0' (o + 48) convertimos a Ascii
-    n /= 10 eliminamos el último dígito del número
-    Repetimos hasta que no queden más dígitos 
+    Declaramos  3 variables:
+        int len 
+        long n
+        char *str
+        - Llamamos a la función count_len y calculamos el tamaño de nbr.
+        - Reservamos espacio con malloc para str
+            con el tamaño de un char * len+1 (char porque la función devuelve char *)
+            (+ 1 es porque necesitamos dejar espacio para '\0')
+        - Hacemos la comprobación de malloc
+
+        - igualamos n a nbr (porque n es de tipo long y necesita poder gestionar los max y min)
+        - Añadimos el '\0' al final de la cadena str[len] -> str[len] = '\0'
+        - Si n es menor a cero:
+            - si es negativo lo convertimos en positivo en la posición 0 de str -> str[0]
+            (n = -n)
+        - Si n es igual a cero
+        - Se escribe cero en la primera posición str[0]
+        - Mientras n sea mayor a cero
+            - Convertimos los dígitos del número a caracteres, desde el final hacia el principio
+            - (n % 10) obtenemos el último dígito + '0' (o + 48) convertimos a Ascii
+            - n /= 10 eliminamos el último dígito del número
+        - Repetimos hasta que no queden más dígitos 
+        - Devuelve str
 */

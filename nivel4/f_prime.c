@@ -64,7 +64,6 @@ int main(int argc, char *argv[])
         printf("1\n");
         return (0);
     }
-
     // Bucle principal: factorización
     while (num > 1)
     {
@@ -76,9 +75,7 @@ int main(int argc, char *argv[])
                 printf("*");
         }
         else
-        {
             i++;
-        }
     }
     printf("\n");
     return (0);
