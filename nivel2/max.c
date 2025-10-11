@@ -51,8 +51,8 @@ int main(void)
     Inicializamos max en tab[0] (porque vamos a empezar a comparar desde la primera posición de tab)
     Hacemos un bucle que recorre tab:
         ->mientras que i (que empieza valiendo cero) sea < que len (el tamaño de tab)
-            Compara cada número con el siguiente, si tab[i] es mayor que len
-                igualamos el valor de max a tab[i] (que es el número más grande (de momento)).
+            - Compara cada número con el siguiente -> if (tab[i] > max)
+                - igualamos el valor de max a tab[i] (que es el número más grande (de momento)).
             avanzamos en i.
     devuelvo max.
 */
