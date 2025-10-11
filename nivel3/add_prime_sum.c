@@ -106,3 +106,40 @@ int main(int argc, char **argv)
     return (0);
     }
 }
+
+/*
+Necesitamos crear 4 funciones auxiliares (en realidad pueden ser solo 3 si hacemos un atoi simplificado)
+ft_isspace -> para gestionar los espacios de ft_atoi
+ft_atoi -> para convertir el argumento de la función principal en un número
+is_prime -> la utilizamos para saber si un número es primo o no.
+
+is_prime:
+Esta función verifica si un número n es primo:
+    - descartamos los números menores o iguales a 1 (no son primos).
+    - Luego verifica si hay algún divisor i desde 2 hasta la raíz cuadrada de n (i * i <= n).
+        - Si encuentra un divisor (n % i == 0), 
+            - devuelve 0 (no es primo).
+        - i++
+    - Si no encuentra divisores, devuelve 1 (es primo).
+
+Función principal:
+
+Declaramos tres variables:
+int num -> el número que le vamos a pasar 
+int i = 2 -> empieza en 2 porque es el primer número primo
+int sum = 0 -> usamos esto para el resultado de la suma
+
+- Comprobamos el número de argumentos
+    - convertimos el argumento con atoi -> num
+    - Si el número (num) es menor o igual a cero
+        - imprime cero y sale
+    - Mientras i (2) es menor o igual que num 
+        - Si es primo (i)
+            - le suma i a sum
+        i++
+    -escribe num con ft_putnbr
+- escribe salto de línea
+else
+    Escribe cero y salto de línea
+    devuelve cero
+*/
