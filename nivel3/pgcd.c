@@ -31,28 +31,28 @@ $
 
 int main (int argc, char **argv)
 {
-    int num1;
-    int num2;
-
     if (argc == 3)
     {
+        unsigned int num1;
+        unsigned int num2;
+        unsigned int temp;
+
         num1 = atoi(argv[1]);
         num2 = atoi(argv[2]);
 
-        if (num1 > 0 && num2 > 0)
+        if (num1 == 0 || num2 == 0)
+            return(0);
+
+        while(num2 != 0)
         {
-            while(num1 != num2)
-            {
-                if (num1 > num2)
-                    num1 = num1 - num2;
-                else
-                    num2 = num2 - num1;
-            }
-            printf("%d", num1);
+            temp = num1 % num2;
+            num1 = num2;
+            num2 = temp;
         }
+        printf("%d", num1);
     }
     printf("\n");
-    return(0);
+    return (0);
 }
 
 /*
