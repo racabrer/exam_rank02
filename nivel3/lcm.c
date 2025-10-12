@@ -78,8 +78,8 @@ unsigned int    lcm(unsigned int a, unsigned int b)
     {
         if ((c % a == 0) && (c % b == 0))
             return (c);
-        c++;
     }
+    c++;
 }
 
 /*
@@ -99,5 +99,5 @@ Empezamos con el valor más grande de a y b (c) y buscamos el primer número que
     (Si c % a == 0 y c % b == 0, significa que c es un múltiplo de ambos números, 
     que por lo tanto es el MCM. En ese caso, se devuelve c).
     - Devolvemos c
-c++
+c++(Fuera del bucle)
 */
