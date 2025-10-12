@@ -37,51 +37,56 @@ $>
 
 */
 
-
-
 #include <unistd.h>
 
-int	is_space(char c)
+int is_space(char c)
 {
-	return (c == ' ' || c == '\t');
+    return (c == ' ' || c == '\t');
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	char	*str;
-	char	newc;
-	int		i;
-	int		j;
-	int		space;
+    int i;
+    int j;
+    int space;
 
-	if (argc == 1)
-	{
-		write(1, "\n", 1);
-		return(1);
-	}
-	i = 1;
-	while (i < argc)
-	{
-		j = 0;
-		str = argv[i];
-		while (str[j])
-		{
-			newc = str[j];
-			space = is_space(str[j + 1]) || str[j + 1] == '\0';
+    if (argc == 1)
+    {
+        write(1, "\n", 1);
+        return (1);
+    }
 
-			if (newc >= 'A' && newc <= 'Z')
-				newc += 32;
+    i = 1;
+    while (i < argc)
+    {
+        j = 0;
+        space = 1; // Empezamos suponiendo que la primera letra de la palabra debe ser mayúscula
 
-			if (newc >= 'a' && newc <= 'z' && space)
-				newc -= 32;
+        // Trabajamos directamente con los caracteres de los argumentos
+        while (argv[i][j])
+        {
+            char c = argv[i][j];
 
-			write(1, &newc, 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
+            if (is_space(c))
+                space = 1; // Si es un espacio, la próxima letra será mayúscula
+            else
+            {
+                if (space && (c >= 'a' && c <= 'z'))  // Si es minúscula y es el inicio de una palabra
+                    c -= 32;  // Convertir a mayúscula
+                else if (!space && (c >= 'A' && c <= 'Z'))  // Si es mayúscula y no es el inicio de una palabra
+                    c += 32;  // Convertir a minúscula
+
+                space = 0;  // Después de una letra, ya no es un espacio
+            }
+
+            write(1, &c, 1);
+            j++;
+        }
+
+        write(1, "\n", 1);  // Imprimir salto de línea después de cada argumento
+        i++;
+    }
+    return (0);
 }
 /*
 	Utilizamos una función auxiliar para gestionar los espacios.

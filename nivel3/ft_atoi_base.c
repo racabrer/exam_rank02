@@ -109,6 +109,18 @@ int	ft_atoi_base(const char *str, int str_base)
     La función principal : int	ft_atoi_base(const char *str, int str_base)
     es muy similar a atoi, pero en este caso, gestiona la base.
 
+Función auxiliar is_hexa:
+
+    int ft_ishexa(int ch, int base_len):
+    Comprueba si es un número o si es una letra de a-f o una letra de A-F
+    - ch: es el carácter que queremos verificar
+    - base_len: es la longitud de la base
+    - Comprueba si el carácter es un dígito entre '0' y '9', 
+        lo considera válido para cualquier base desde la base 2 en adelante.
+    - Si la base es mayor que 10 (por ejemplo, base 16) y el carácter 
+        está entre 'a' y 'f' o 'A' y 'F', también lo considera válido.
+
+Función principal
     Declaramos tres variables:
         i -> iterador para recorrer str[i]. Lo inicializamos a cero
         sign -> para manejar el signo (negativo o positivo). Lo inicializamos a uno
@@ -123,9 +135,9 @@ int	ft_atoi_base(const char *str, int str_base)
         Multiplicamos el resultado por la base.
         Si str[i] está entre '0' y '9' 
             result += str[i] - '0' || result += str[i] - 48
-        Si str[i] está entre 'a' y 'f'
+        Sino si str[i] está entre 'a' y 'f'
             result += str[i] - 'a' + 10
-        Si str[i] está entre 'A' y 'F'
+        Sino si str[i] está entre 'A' y 'F'
             result += str[i] - 'A' + 10  
         Avanzamos en i (i++)
     Devuelve result * sign
