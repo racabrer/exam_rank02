@@ -85,26 +85,31 @@ FFF0000F
 $> 
 */
 
-void fill(char **tab, t_point size, int row, int col)
+typedef struct  s_point
 {
-    if (row < 0 || col < 0 || row >= size.y || col >= size.x)
-        return;
-    if (tab[row][col] != '0')
-        return;
+    int           x;
+    int           y;
+}               t_point;
 
-    tab[row][col] = 'F';
+void	fill(char **tab, t_point size, t_point p, char org, char to_fill)
+{
+	if (p.y < 0 || p.y >= size.y || p.x < 0 || p.x >= size.x
+		|| tab[p.y][p.x] != org || tab[p.y][p.x] == to_fill)
+		return;
 
-    fill(tab, size, row - 1, col); // arriba
-    fill(tab, size, row + 1, col); // abajo
-    fill(tab, size, row, col + 1); // derecha
-    fill(tab, size, row, col - 1); // izquierda
+	tab[p.y][p.x] = to_fill;
+
+	fill(tab, size, (t_point){p.x, p.y - 1}, org, to_fill); // arriba
+	fill(tab, size, (t_point){p.x, p.y + 1}, org, to_fill); // abajo
+	fill(tab, size, (t_point){p.x - 1, p.y}, org, to_fill); // izquierda
+	fill(tab, size, (t_point){p.x + 1, p.y}, org, to_fill); // derecha
 }
 
-void flood_fill(char **tab, t_point size, t_point begin)
+void    flood_fill(char **tab, t_point size, t_point begin)
 {
-    if (tab[begin.y][begin.x] == '0')
-        fill(tab, size, begin.y, begin.x);
+	fill(tab, size, begin, tab[begin.y][begin.x], 'F');
 }
+
 
 
 
