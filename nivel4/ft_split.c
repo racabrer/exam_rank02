@@ -40,9 +40,8 @@ char	*ft_strncpy(char *s1, char *s2, int n)
     }
     s1[i] = '\0';
     return s1;
-
-
 }
+
 char    **ft_split(char *str)
 {
     int		word_count = 0; // contador de palabras

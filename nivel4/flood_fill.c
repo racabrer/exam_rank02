@@ -85,28 +85,27 @@ FFF0000F
 $> 
 */
 
-void fill(char **tab, t_point size, char target, int row, int col)
+void fill(char **tab, t_point size, int row, int col)
 {
     if (row < 0 || col < 0 || row >= size.y || col >= size.x)
         return;
-    if(tab[row][col] == 'F' || tab[row][col] != target)
+    if (tab[row][col] != '0')
         return;
+
     tab[row][col] = 'F';
 
-    fill(tab, size, target, row - 1, col);
-    fill(tab, size, target, row + 1, col);
-    fill(tab, size, target, row, col + 1);
-    fill(tab, size, target, row, col - 1);
-
+    fill(tab, size, row - 1, col); // arriba
+    fill(tab, size, row + 1, col); // abajo
+    fill(tab, size, row, col + 1); // derecha
+    fill(tab, size, row, col - 1); // izquierda
 }
 
-void  flood_fill(char **tab, t_point size, t_point begin)
+void flood_fill(char **tab, t_point size, t_point begin)
 {
-    char target;
-    
-    target = tab[begin.y][begin.x];
-    fill(tab, size, target, begin.y, begin.x);
+    if (tab[begin.y][begin.x] == '0')
+        fill(tab, size, begin.y, begin.x);
 }
+
 
 
 /*
