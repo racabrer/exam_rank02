@@ -56,7 +56,7 @@ struct s_list
 
 t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 {
-    t_list *start = lst;
+    t_list *start = lst; // Esta línea guarda una referencia al inicio de la lista original
     int swap;
 
     while(lst && lst->next)
