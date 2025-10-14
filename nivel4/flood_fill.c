@@ -85,31 +85,42 @@ FFF0000F
 $> 
 */
 
-typedef struct  s_point
-{
-    int           x;
-    int           y;
-}               t_point;
+typedef struct s_point {
+	int x;
+	int y;
+} t_point;
 
-void	fill(char **tab, t_point size, t_point p, char org, char to_fill)
+// Función recursiva que realiza el llenado
+void	fill(char **tab, t_point size, t_point pos, char target_char, char fill_char)
 {
-	if (p.y < 0 || p.y >= size.y || p.x < 0 || p.x >= size.x
-		|| tab[p.y][p.x] != org || tab[p.y][p.x] == to_fill)
+	// Verifica si la posición está fuera de los límites de la grilla
+	if (pos.y < 0 || pos.y >= size.y || pos.x < 0 || pos.x >= size.x)
 		return;
 
-	tab[p.y][p.x] = to_fill;
+	// Verifica si el carácter actual no es el que queremos reemplazar o ya fue llenado
+	if (tab[pos.y][pos.x] != target_char || tab[pos.y][pos.x] == fill_char)
+		return;
 
-	fill(tab, size, (t_point){p.x, p.y - 1}, org, to_fill); // arriba
-	fill(tab, size, (t_point){p.x, p.y + 1}, org, to_fill); // abajo
-	fill(tab, size, (t_point){p.x - 1, p.y}, org, to_fill); // izquierda
-	fill(tab, size, (t_point){p.x + 1, p.y}, org, to_fill); // derecha
+	// Rellena la posición actual
+	tab[pos.y][pos.x] = fill_char;
+
+	// Llama recursivamente a los vecinos en las 4 direcciones (arriba, abajo, izquierda, derecha)
+	fill(tab, size, (t_point){pos.x, pos.y - 1}, target_char, fill_char); // arriba
+	fill(tab, size, (t_point){pos.x, pos.y + 1}, target_char, fill_char); // abajo
+	fill(tab, size, (t_point){pos.x - 1, pos.y}, target_char, fill_char); // izquierda
+	fill(tab, size, (t_point){pos.x + 1, pos.y}, target_char, fill_char); // derecha
 }
 
-void    flood_fill(char **tab, t_point size, t_point begin)
+// Función principal, no se puede modificar su firma
+void	flood_fill(char **tab, t_point size, t_point begin)
 {
-	fill(tab, size, begin, tab[begin.y][begin.x], 'F');
-}
+	char target_char = tab[begin.y][begin.x];
 
+	if (target_char == 'F') // Ya está lleno, no hacemos nada
+		return;
+
+	fill(tab, size, begin, target_char, 'F');
+}
 
 
 
