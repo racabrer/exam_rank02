@@ -87,7 +87,7 @@ int	main(int argc, char *argv[])
 	En la función principal:
 	Declaramos 5 variables:
 		- char *str -> string actual que estamos procesando
-		- newc -> carácter actual, modificado(por si hay que cambiar mayúsculas o minúsculas)
+		- char newc -> carácter actual, modificado(por si hay que cambiar mayúsculas o minúsculas)
 		- int i -> índice para recorrer los argumentos (empezamos en 1)
 		- int j -> índice para recorrer los caracteres de cada argumento
 		- int space -> flag para marcar si es un espacio
