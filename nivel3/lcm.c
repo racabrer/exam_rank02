@@ -64,23 +64,6 @@ unsigned int lcm(unsigned int a, unsigned int b)
     }
 */
 
-unsigned int    lcm(unsigned int a, unsigned int b)
-{
-    unsigned int c;
-
-    if (a == 0 || b == 0)
-        return (0);
-    if (a > b)
-        c = a;
-    else
-        c = b;
-    while (1)
-    {
-        if ((c % a == 0) && (c % b == 0))
-            return (c);
-    }
-    c++;
-}
 
 /*
 Esta función nos devuelve el mínimo común múltiplo de dos números. 

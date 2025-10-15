@@ -62,19 +62,20 @@ Que es el número más grande que divide ambos sin dejar resto.
 De las funciones permitidas, vamos a utilizar solamente dos: atoi y printf
 
 
-Comprobamos el número de argumentos
-Declaramos dos variables de tipo int. num1 y num2.
-Convertimos las variables con atoi pero ***es importante que lo hagamos dentro
-de la comprobación del número de argumentos.***
-Si ambos números son mayores que 0
-    - Mientras que los números no sean iguales
-        Si num1 es mayor que num2
-            num1 = num1 - num2
-        Sino
-            num2 = num2 - num1
-     imprimimos con print num1.
-    \n
-    fin del programa
+- Comprobamos el número de argumentos
+- Declaramos dos variables de tipo unsigned int. num1 y num2 para los números 
+    y una temporal para los resultados.
+- Convertimos las variables con atoi pero ***es importante que lo hagamos dentro
+    de la comprobación del número de argumentos.***
+- Si alguno de los números es igual a cero, devuelve cero y fin del programa.
+- Mientas que num2 sea distinto de cero
+    - igualamos la variable temp al módulo de num1 % num2
+    - igualamos num1 a num2
+    - num2 a temp
+    ->básicamente hemos hecho un swapppp
+- imprimimos con print num1.
+\n
+fin del programa
 
     ** ACLARACIÓN RANDOM **
 
