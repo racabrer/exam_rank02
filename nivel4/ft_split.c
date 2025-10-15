@@ -29,60 +29,58 @@ saltos de línea, inicio y final de cadena.
 
 #include <stdlib.h>
 
-char	*ft_strncpy(char *s1, char *s2, int n)
+char *ft_strcnpy(char *s1, char *s2, int n)
 {
     int i = 0;
 
-    while(i < n && s2[i])
-    {
+    while (i < n && s2[i]) {
         s1[i] = s2[i];
         i++;
     }
     s1[i] = '\0';
-    return s1;
+    return (s1);
 }
 
-char    **ft_split(char *str)
+char **ft_split(char *str)
 {
-    int		word_count = 0; // contador de palabras
-	int		new_word = 0; // índice temporal que guarda dónde empieza la siguiente palabra
-	int		i = 0; //índice para recorrer str
-	int		j = 0; //índice para rellenar el array out
-	char 	**out = 0; //array de strings || Guarda el resultado de todas las palabras separadas
+    int i = 0;
+    int j = 0;
+    int count_word = 0;
+    int new_word = 0;
+    char **out;
 
-    //BLOQUE 1:
-    while(str[i])
-    {
-        while(str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+    // Contar el número de palabras
+    while (str[i]) {
+        while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
             i++;
-        if (str[i])
-            word_count++;
-        while(str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+        if (str[i]) {
+            count_word++;
+        }
+        while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
             i++;
     }
-    //BLOQUE 2:
     i = 0;
-    out = (char **)malloc(sizeof(char *) * (word_count + 1));
-    if(!out)
-        return (NULL);
-    
-    //BLOQUE 3:
-    while(str[i])
-    {
-        while(str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+    // Asignar memoria para el array de palabras
+    out = (char **)malloc(sizeof(char *) * (count_word + 1));  // count_word + 1 para el NULL final
+    if (!out)
+        return NULL;
+    // Extraer las palabras
+    while (str[i]) {
+        while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
             i++;
-        new_word = i;
-        while(str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-            i++;
-        if (i > new_word)
-        {
-            out[j] = (char *)malloc(sizeof(char) * (i - new_word) + 1);
-            if (!out)
+        if (str[i]) {
+            new_word = i;
+            while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+                i++;
+            // Asignar memoria para cada palabra y copiarla
+            out[j] = (char *)malloc(sizeof(char) * (i - new_word + 1));  // +1 para el '\0'
+            if (!out[j])
                 return NULL;
-            ft_strncpy(out[j++], &str[new_word], i - new_word);
+            ft_strcnpy(out[j], &str[new_word], i - new_word);
+            j++;
         }
-    }   
-    out[j] = NULL;
+    }
+    out[j] = NULL;  // Poner el NULL al final del array de cadenas
     return out;
 }
 
