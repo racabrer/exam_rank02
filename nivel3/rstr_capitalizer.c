@@ -39,47 +39,43 @@ $>
 
 #include <unistd.h>
 
-int	is_space(char c)
+int is_space(char c)
 {
-	return (c == ' ' || c == '\t');
+    return (c == ' ' || c == '\t');
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	char	*str;
-	char	newc;
-	int		i;
-	int		j;
-	int		space;
+    int i;
+    int j;
+    int space;
 
-	if (argc == 1)
-	{
-		write(1, "\n", 1);
-		return(1);
-	}
-	i = 1;
-	while (i < argc)
-	{
-		j = 0;
-		str = argv[i];
-		while (str[j])
-		{
-			newc = str[j];
-			space = is_space(str[j + 1]) || str[j + 1] == '\0';
+    if (argc == 1)
+    {
+        write(1, "\n", 1);
+        return (0);
+    }
+    i = 1;
+    while (i < argc)
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            space = is_space(argv[i][j + 1]) || argv[i][j + 1] == '\0';
 
-			if (newc >= 'A' && newc <= 'Z')
-				newc += 32;
+            if (argv[i][j] >= 'A' && argv[i][j] <= 'Z')
+                argv[i][j] += 32;
 
-			if (newc >= 'a' && newc <= 'z' && space)
-				newc -= 32;
+            if (argv[i][j] >= 'a' && argv[i][j] <= 'z' && space)
+                argv[i][j] -= 32;
 
-			write(1, &newc, 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
+            write(1, &argv[i][j], 1);
+            j++;
+        }
+        write(1, "\n", 1);
+        i++;
+    }
+    return (0);
 }
 
 /*
