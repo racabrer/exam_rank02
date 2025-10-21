@@ -64,59 +64,43 @@ Mientras que j sea menor que argc (cuando hay más argumentos que el nombre del 
 */
 #include <unistd.h>
 
-int ft_isletter(char c)
-{
-    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
-}
-
-int ft_isspace (char c)
+int ft_is_space(char c)
 {
     return (c == ' ' || c == '\t');
 }
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-    /*
-    j se usa para recorrer los argumentos en argv, es el índice de los argumentos.
-    i se usa para recorrer los caracteres dentro de cada argumento en argv[j].
-    */
-    int i; 
+    int i;
     int j;
     int new_word;
 
-    if (argc < 2)
+    if (argc == 1)
     {
         write(1, "\n", 1);
         return (0);
     }
-
-    j = 1;
-    while (j < argc) //Cuando hay más argumentos que el nombre del programa, entra
+    i = 1;
+    while (i < argc)
     {
-        i = 0;
+        j = 0;
         new_word = 1;
-        while (argv[j][i])
+        while (argv[i][j])
         {
-            // Convert to lowercase if it's a letter
-            if (argv[j][i] >= 'A' && argv[j][i] <= 'Z')
-                argv[j][i] += 32;
-            // Capitalize if it's the start of a word
-            if (new_word && ft_isletter(argv[j][i]))
-                argv[j][i] -= 32;
-
-            write(1, &argv[j][i], 1);
-
-            // Update new_word flag
-            if (ft_isspace(argv[j][i]))
+            if (new_word && argv[i][j] >= 'a' && argv[i][j] <= 'z')
+                argv[i][j] -= 32;
+            else if (!new_word && argv[i][j] >= 'A' && argv[i][j] <= 'Z')
+                argv[i][j] += 32;
+            write(1, &argv[i][j], 1);
+            if (ft_is_space(argv[i][j]))
                 new_word = 1;
             else
                 new_word = 0;
-            i++;
+            j++;
         }
         write(1, "\n", 1);
-        j++;
+        i++;
     }
-
     return (0);
 }
 
