@@ -21,28 +21,25 @@ Repite el proceso hasta que el array esté ordenado.
 
 */
 
-void sort_int_tab(int *tab, unsigned int size)
+void	sort_int_tab(int *tab, unsigned int size)
 {
-    int tmp;
-    unsigned int i;
-    unsigned int j;
+	unsigned int	i;
+	int				tmp;
 
-    i = 0;
-    while (i < size - 1)
-    {
-        j = i;
-        while (j < size)
-        {
-            if (tab[i] > tab[j])
-            {
-                tmp = tab[i];
-                tab[i] = tab[j];
-                tab[j] = tmp;
-            }
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	tmp = 0;
+	while (i < size - 1)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			tmp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = tmp;
+			i = 0;
+		}
+		else
+			i++;
+	}
 }
 
 /*
