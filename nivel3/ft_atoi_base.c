@@ -50,26 +50,31 @@ función ft_atoi_base(str, base):
 
 
 */
-
-int ft_isspace(char c)
+int ft_isspace (char c)
 {
-    return(c == ' ' || c == '\t');
+    return (c == ' ' || c == '\t');
 }
 
-int ft_ishexa(int ch, int base_len)
+int is_hexa(int ch, int base_len)
 {
-    if ((ch >= '0' && ch <= '9') || (base_len > 10 && ((ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F'))))
-        return (1);
-    else
-        return (0);
-    
+    char *lcbase= "0123456789abcdef";
+    char *ucbase = "0123456789ABCDEF";
+    int i = 0;
+
+    while (i < base_len)
+    {
+        if (ch == lcbase[i] || ch == ucbase[i])
+            return(1);
+        i++;
+    }
+    return (0);
 }
 
 int	ft_atoi_base(const char *str, int str_base)
 {
     int i = 0;
-    int result = 0;
     int sign = 1;
+    int result = 0;
 
     while(ft_isspace(str[i]))
         i++;
@@ -83,19 +88,17 @@ int	ft_atoi_base(const char *str, int str_base)
         else 
             i++;
     }
-    while(str[i] && ft_ishexa(str[i], str_base))
+    while(str[i] && (is_hexa(str[i], str_base)))
     {
-        result *= str_base;
         if (str[i] >= '0' && str[i] <= '9')
-            result += str[i] - '0';
+            result = result * str_base + (str[i] - '0');
         else if (str[i] >= 'a' && str[i] <= 'f')
-            result += str[i] - 'a' + 10;
+            result = result * str_base + (str[i] - 'a' + 10);
         else if (str[i] >= 'A' && str[i] <= 'F')
-            result += str[i] - 'A' + 10;
+            result = result * str_base + (str[i] - 'A' + 10);
         i++;
     }
-    return (result * sign);
-
+    return(result * sign);
 }
 
 
