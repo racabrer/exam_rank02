@@ -64,12 +64,12 @@ Mientras que j sea menor que argc (cuando hay más argumentos que el nombre del 
 */
 #include <unistd.h>
 
-int ft_is_space(char c)
+int ft_isspace(char c)
 {
     return (c == ' ' || c == '\t');
 }
 
-int main(int argc, char *argv[])
+int main (int argc, char **argv)
 {
     int i;
     int j;
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
         return (0);
     }
     i = 1;
-    while (i < argc)
+    while(i < argc)
     {
         j = 0;
         new_word = 1;
@@ -92,15 +92,15 @@ int main(int argc, char *argv[])
             else if (!new_word && argv[i][j] >= 'A' && argv[i][j] <= 'Z')
                 argv[i][j] += 32;
             write(1, &argv[i][j], 1);
-            if (ft_is_space(argv[i][j]))
+            if (ft_isspace(argv[i][j]))
                 new_word = 1;
             else
                 new_word = 0;
             j++;
         }
-        write(1, "\n", 1);
-        i++;
+        i++;    
     }
+    write(1, "\n", 1);
     return (0);
 }
 
