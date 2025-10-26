@@ -76,3 +76,7 @@ Paso a paso:
 	9. \n
 	10. return (0).
 */
+
+
+bit = (octet >> i & 1) + 48
+write(1, &bit, 1);
