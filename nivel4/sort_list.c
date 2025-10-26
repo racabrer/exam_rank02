@@ -45,7 +45,6 @@ struct s_list
 };
 */
 
-
 typedef struct s_list t_list;
 
 struct s_list

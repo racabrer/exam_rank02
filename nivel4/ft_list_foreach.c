@@ -31,10 +31,14 @@ typedef struct    s_list
     void          *data;
 }                 t_list;
 
-void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
+
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-    (*f)(begin_list -> data);
-    begin_list = begin_list->next;
+    while (begin_list)  // Mientras el nodo actual no sea NULL
+    {
+        (*f)(begin_list->data);        // Aplica la función al dato del nodo actual
+        begin_list = begin_list->next; // Avanza al siguiente nodo
+    }
 }
 
 /*
