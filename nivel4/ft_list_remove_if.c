@@ -34,7 +34,14 @@ prev → es el nodo anterior al actual.
 current → el nodo actual que estamos examinando.
 temp → auxiliar para guardar el nodo a eliminar y luego liberarlo con free.
 */
+
 #include <stdlib.h>
+
+// Primero necesitamos la definición de t_list
+typedef struct s_list {
+    void *data;
+    struct s_list *next;
+} t_list;
 
 void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
@@ -42,33 +49,36 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
     t_list *prev;
     t_list *current;
 
-    //Elimina los nodos al principio si coinciden con dataref
-    while (*begin_list && cmp(*begin_list)->data, data_ref == 0)
+    // PASO 1: Eliminar nodos al principio que coincidan con data_ref
+    while (*begin_list && cmp((*begin_list)->data, data_ref) == 0)
     {
-        temp = *begin_list;
-        *begin_list = (*begin_list)->next;
-        free(temp);
+        temp = *begin_list;           // Guarda el nodo a eliminar
+        *begin_list = (*begin_list)->next;  // Avanza el inicio de la lista
+        free(temp);                   // Libera el nodo
     }
-    //Recorre la lista para eliminar los nodos de enmedio
-    prev = *begin_list;
-    if (!prev)
+
+    // PASO 2: Si la lista quedó vacía, terminamos
+    if (!*begin_list)
         return;
 
-    current = current->next; //Inicializa el recorrido
-    while(current)
+    // PASO 3: Inicializar para recorrer el resto de la lista
+    prev = *begin_list;               // prev apunta al primer nodo (que no coincide)
+    current = prev->next;             // current apunta al segundo nodo
+
+    // PASO 4: Recorrer el resto de la lista
+    while (current)
     {
-        if(cmp(current->data, data_ref) == 0) // si esto se cumple, eliminamos el nodo actual
+        if (cmp(current->data, data_ref) == 0)  // Si el nodo actual coincide
         {
-            temp = current;
-            prev->next = current->next; // Quita el nodo actual de la lista
-            free(temp);
-            current = prev->next; // actualiza current
+            temp = current;           // Guarda el nodo a eliminar
+            prev->next = current->next;  // Conecta el nodo anterior con el siguiente
+            free(temp);               // Libera el nodo actual
+            current = prev->next;     // Actualiza current al siguiente de prev
         }
-        else
+        else  // Si no coincide, avanzamos ambos punteros
         {
-            prev = current; // Avanzamos ambos punteros (prev y current)
-            current = current->next; // Como no se eliminó nada, simplemente pasamos al siguiente nodo.
+            prev = current;           // Avanza prev
+            current = current->next;  // Avanza current
         }
     }
-
 }
