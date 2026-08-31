@@ -92,3 +92,45 @@ Comprobamos el número de argumentos
 
 	
 */
+
+//Código aleternativo
+
+#include <unistd.h>
+
+int ft_isspace(char c)
+{
+    return (c == ' ' || c == '\t');
+}
+
+
+int main(int argc, char **argv)
+{
+	int start;
+	int end;
+    int flag;
+	int i = 0;
+
+	if (argc == 2)
+	{
+		while(argv[1][i] != '\0')
+			i++;
+		while(i >= 0)
+		{
+			while( argv[1][i] == '\0' || ft_isspace(argv[1][i]))
+				i--;
+			end = i;
+			while(argv[1][i] && !ft_isspace(argv[1][i]))
+				i--;
+			start = i + 1;
+			flag = start;
+			while(start <= end)
+			{
+				write (1, &argv[1][start], 1);
+				start++;
+			}
+			if (flag !=0)
+				write(1, " ", 1);
+		}
+	}
+	write(1, "\n", 1);
+}
