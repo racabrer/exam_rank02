@@ -24,32 +24,45 @@ $>
 */
 
 #include <unistd.h>
+#include <stdlib.h>
 
-int ft_isspace(char c)
+int ft_isdigit(int c)
 {
-    return (c == ' ' || c == '\t');
+    return(c >= '0' && c <= '9');
+}
+
+int is_positive_number(char *str)
+{
+    int i = 0;
+
+    if (!str || str[0] == '\0')
+        return (0);
+    while(str[i])
+    {
+        if (!ft_isdigit(str[i]))
+            return (0);
+        i++;
+    }
+    i = 0;
+    while (str[i] == '0')
+        i++;
+    if (str[i] == '\0')    
+        return (0);
+    return (1);
+       
 }
 
 int ft_atoi(char *str)
 {
     int i = 0;
     int result = 0;
-    int sign = 1;
-
-    while(ft_isspace(str[i]))
-        i++;
-    while(str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
+ 
     while(str[i] >= '0' && str[i] <= '9')
     {
         result = (result * 10) + (str[i] - 48);
         i++;
     }
-    return (result * sign);
+    return (result);
 }
 
 void ft_putnbr(int nb)
@@ -62,41 +75,46 @@ void ft_putnbr(int nb)
     write(1, &c, 1);
 }
 
-int is_prime (int nb) // nb = 5
+int ft_isprime(int nb)
 {
     int i = 2;
-    
+   
     if (nb <= 1)
         return (0);
-    while(i * i <= nb)
+    while (i * i <= nb)
     {
-        if (nb % i == 0)
+        if (nb % i == 0) //no es primo
             return (0);
         i++;
     }
     return (1);
 }
 
-int main (int argc, char **argv)
+int main(int argc, char **argv) 
 {
-   int i = 2;                           //argv = 7
-   int num;
-   int sum;
-                            
-    if (argc == 2)
+    int i;
+    int num;
+    int sum; 
+    
+    i = 2; 
+    sum = 0; 
+    if (argc == 2) 
     {
-        num = ft_atoi(argv[1]);
-        if (i <= 0)
-            write(1, "0\n", 2);
-        while(i <= num)
+        if (!is_positive_number(argv[1])) 
         {
-            if (is_prime(i))
+            write(1, "0\n", 2);
+            exit(0); 
+        } 
+        num = ft_atoi(argv[1]); 
+        while (i <= num) 
+        { 
+            if (ft_isprime(i)) 
                 sum += i;
-            i++;
-        }
-        ft_putnbr(sum);
-        write(1, "\n", 1);
-    }
+            i++; 
+        } 
+        ft_putnbr(sum); 
+        write(1, "\n", 1); 
+    } 
     else 
-    write(1, "0\n", 2);
+        write(1, "0\n", 2); 
 }
