@@ -1,5 +1,5 @@
 /*
-Explicame sin código cómo hacer esto Assignment name  : is_power_of_2
+Assignment name  : is_power_of_2
 Expected files   : is_power_of_2.c
 Allowed functions: None
 --------------------------------------------------------------------------------
