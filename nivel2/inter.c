@@ -26,11 +26,6 @@ $
 
 #include <unistd.h>
 
-int ft_isspace(char c)
-{
-    return (c == ' ' || c == '\t');
-}
-
 int main(int argc, char **argv)
 {
     int i = 0;
