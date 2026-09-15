@@ -39,12 +39,17 @@ $>
 
 #include <unistd.h>
 
-int is_space(char c)
+int ft_isletter(char c)
+{
+    return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
+}
+
+int ft_isspace (char c)
 {
     return (c == ' ' || c == '\t');
 }
 
-int main(int argc, char *argv[])
+int main (int argc, char **argv)
 {
     int i;
     int j;
@@ -61,14 +66,17 @@ int main(int argc, char *argv[])
         j = 0;
         while (argv[i][j])
         {
-            space = is_space(argv[i][j + 1]) || argv[i][j + 1] == '\0';
-
-            if (argv[i][j] >= 'A' && argv[i][j] <= 'Z')
-                argv[i][j] += 32;
-
-            if (argv[i][j] >= 'a' && argv[i][j] <= 'z' && space)
-                argv[i][j] -= 32;
-
+            space = ft_isspace(argv[i][j + 1]) || argv[i][j + 1] == '\0';
+            if (ft_isletter(argv[i][j]) && !space)
+            {
+                if (argv[i][j] >= 65 && argv[i][j] <= 90)
+                    argv[i][j] += 32;
+            }
+            if (ft_isletter(argv[i][j]) && space)
+            {
+                if (argv[i][j] >= 97 && argv[i][j] <= 122)
+                    argv[i][j] -= 32;
+            }
             write(1, &argv[i][j], 1);
             j++;
         }
@@ -77,6 +85,7 @@ int main(int argc, char *argv[])
     }
     return (0);
 }
+
 
 /*
 	Utilizamos una función auxiliar para gestionar los espacios.
