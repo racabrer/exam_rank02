@@ -24,7 +24,6 @@ $>
 */
 
 #include <unistd.h>
-#include <stdlib.h>
 
 int ft_isdigit(int c)
 {
