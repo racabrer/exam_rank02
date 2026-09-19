@@ -85,96 +85,30 @@ FFF0000F
 $> 
 */
 
-typedef struct s_point {
-	int x;
-	int y;
-} t_point;
-
-// Función recursiva que realiza el llenado
-void	fill(char **tab, t_point size, t_point pos, char target_char, char fill_char)
+typedef struct s_point
 {
-	// Verifica si la posición está fuera de los límites de la grilla
-	if (pos.y < 0 || pos.y >= size.y || pos.x < 0 || pos.x >= size.x)
-		return;
+	int	x;
+	int	y;
+}	t_point;
 
-	// Verifica si el carácter actual no es el que queremos reemplazar o ya fue llenado
-	if (tab[pos.y][pos.x] != target_char || tab[pos.y][pos.x] == fill_char)
+void	fill(char **tab, t_point size, t_point pos, char target, char fill_char)
+{
+	if (pos.y < 0 || pos.y >= size.y
+		|| pos.x < 0 || pos.x >= size.x)
 		return;
-
-	// Rellena la posición actual
+	if (tab[pos.y][pos.x] != target)
+		return;
 	tab[pos.y][pos.x] = fill_char;
-
-	// Llama recursivamente a los vecinos en las 4 direcciones (arriba, abajo, izquierda, derecha)
-	fill(tab, size, (t_point){pos.x, pos.y - 1}, target_char, fill_char); // arriba
-	fill(tab, size, (t_point){pos.x, pos.y + 1}, target_char, fill_char); // abajo
-	fill(tab, size, (t_point){pos.x - 1, pos.y}, target_char, fill_char); // izquierda
-	fill(tab, size, (t_point){pos.x + 1, pos.y}, target_char, fill_char); // derecha
+	fill(tab, size, (t_point){pos.x, pos.y - 1}, target, fill_char);
+	fill(tab, size, (t_point){pos.x, pos.y + 1}, target, fill_char);
+	fill(tab, size, (t_point){pos.x - 1, pos.y}, target, fill_char);
+	fill(tab, size, (t_point){pos.x + 1, pos.y}, target, fill_char);
 }
 
-// Función principal, no se puede modificar su firma
 void	flood_fill(char **tab, t_point size, t_point begin)
 {
-	char target_char = tab[begin.y][begin.x];
+	char	target;
 
-	if (target_char == 'F') // Ya está lleno, no hacemos nada
-		return;
-
-	fill(tab, size, begin, target_char, 'F');
+	target = tab[begin.y][begin.x];
+	fill(tab, size, begin, target, 'F');
 }
-
-
-
-/*
-Estructura t_point:
-    x: entero
-    y: entero
-
-Función fill(tab, size, target, row, col):
-    Si (row < 0 o row >= size.y) o (col < 0 o col >= size.x):
-        Salir (fuera de los límites)
-    Si (tab[row][col] != target):
-        Salir (no es parte de la zona a llenar)
-
-    Cambiar tab[row][col] a 'F'  (llenamos el punto actual)
-
-    Llamar a fill para los 4 puntos adyacentes:
-        fill(tab, size, target, row + 1, col)  (abajo)
-        fill(tab, size, target, row - 1, col)  (arriba)
-        fill(tab, size, target, row, col + 1)  (derecha)
-        fill(tab, size, target, row, col - 1)  (izquierda)
-
-Función flood_fill(tab, size, begin):
-    Si (begin.x < 0 o begin.x >= size.x) o (begin.y < 0 o begin.y >= size.y):
-        Salir (el punto inicial está fuera de los límites)
-
-    target = tab[begin.y][begin.x]  (el carácter en el punto de inicio)
-    Llamar a fill(tab, size, target, begin.y, begin.x)  (empezamos el llenado)
-
-*/
-
-/*
-	El objetivo de esta función es llenar una zona de caracteres dentro de una matriz bidimensional (char **)
-		char ** = char [][].
-	Comienza desde un punto inicial y va reemplazando los caracteres adyacentes (horizontales y verticales) con 'F'
-	El punto inicial es el target.
-
-		**********************************************************************************************************
-
-	Creamos una función auxiliar:
-	void fill (char ** tab, t_point size, char target, int row, int col)
-	Hacemos comprobaciones para ver que no desborda.
-
-		Si row o col < 0, o si el tamaño de row es mayor/igual que size.y o col es mayor/igual row
-		Si (tab[row][col] != target) -> sale
-		Vamos llenando el punto actual igualando tab[row][col] a 'F'
-		Utilizamos recursividad para recorrer todos los puntos: 
-	        fill(tab, size, target, row + 1, col)  (abajo)
-        	fill(tab, size, target, row - 1, col)  (arriba)
-        	fill(tab, size, target, row, col + 1)  (derecha)
-        	fill(tab, size, target, row, col - 1)  (izquierda)		
-	
-	Función flood_fill(tab, size, begin):
-		Declaramos una variable target (que va a ser el carácter del punto de inicio).
-		target ->> target = tab[begin.y][begin.x]
-		Comenzamos a rellenar llamando a fill(tab, size, target, begin.y, begin.x)
-*/
