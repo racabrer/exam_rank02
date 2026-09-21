@@ -21,35 +21,6 @@ Devuelva ese número convertido en texto (char *), como por ejemplo:
 -123 → "-123"
 El texto debe terminar con '\0'.
 La memoria debe ser reservada con malloc.
-
-                            paso a paso
-    ----------------------------------------------------------------
-    Contar cuántos caracteres necesitas:
-    Usa un bucle que divida nbr por 10 hasta que llegue a 0.
-    Si nbr es 0, el resultado debe ser "0" (1 carácter + nulo). 
-    Reservar memoria con malloc.
-    Convertir el número a texto:
-        Tomar cada dígito: digit = abs(nbr % 10) + '0'.
-        Guardarlo en la posición correcta.
-        Agregar el signo negativo si corresponde.
-    Terminar con '\0'.
-
-EXPLICACIÓN POR FUNCIONES:
-    count len:
-    len: contador que almacenará la cantidad de caracteres
-    n: se guarda nbr como long para evitar errores al manejar INT_MIN
-    Cuando convertimos un número con itoa, necesitamos saber el número de caracteres que tiene 
-    eso incluye los signos si los tiene.
-    Si n es menor o iigual a cero entonces es o cero, que en ese caso es un caracter
-    o negativo que en ese caso hay que añadir el signo menos 
-    mientras que n sea distinto a cero dividimos n entre 10 y aumentamos len.
-    Devolvemos len. 
-
-    ft_itoa:
-
-    
-
-
 */
 #include <stdlib.h>
 
