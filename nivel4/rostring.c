@@ -80,16 +80,12 @@ int main (int argc, char **argv)
 }
 
 /*
-los fallos que he tenido en esta función es en el número de argumentos 
-y en la parte final, la comprobación de la flag printed va por separado del while (start < end)
-*/
-
-/*
     Necesitamos mover la primera palabra del string al final de la cadena 
     Vamos a usar solo write de las funciones permitidas
-    Creo una función auxiliar para los espacios
+    
+    - Creo una función auxiliar para los espacios
 
-    En el main:
+    - En el main:
     Declaro 4 variables:
         i -> para recorrer argv
         start -> marca el inicio de la palabra
