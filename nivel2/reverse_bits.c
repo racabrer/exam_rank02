@@ -31,8 +31,7 @@ unsigned char	reverse_bits(unsigned char octet)
         byte = (byte << 1) | (octet & 1);
         octet = octet >> 1;
     }
-    return (byte)
-    
+    return (byte);
 }
 
 /*
