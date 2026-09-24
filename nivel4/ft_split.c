@@ -50,10 +50,12 @@ char **ft_split(char *str)
     char **out;
 
     // Contar el número de palabras
-    while (str[i]) {
+    while (str[i]) 
+	{
         while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
             i++;
-        if (str[i]) {
+        if (str[i]) 
+		{
             count_word++;
         }
         while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
@@ -65,10 +67,12 @@ char **ft_split(char *str)
     if (!out)
         return NULL;
     // Extraer las palabras
-    while (str[i]) {
+    while (str[i]) 
+	{
         while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
             i++;
-        if (str[i]) {
+        if (str[i]) 
+		{
             new_word = i;
             while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
                 i++;
