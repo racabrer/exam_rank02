@@ -98,9 +98,9 @@ int main (int argc, char **argv)
                 new_word = 0;
             j++;
         }
-        i++;    
+        write(1, "\n", 1);
+        i++;
     }
-    write(1, "\n", 1);
     return (0);
 }
 
