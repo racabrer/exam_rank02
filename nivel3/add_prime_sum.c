@@ -64,16 +64,6 @@ int ft_atoi(char *str)
     return (result);
 }
 
-void ft_putnbr(int nb)
-{
-    char c;
-
-    if (nb >= 10)
-        ft_putnbr(nb / 10);
-    c = nb % 10 + 48;
-    write(1, &c, 1);
-}
-
 int ft_isprime(int nb)
 {
     int i = 2;
@@ -87,6 +77,16 @@ int ft_isprime(int nb)
         i++;
     }
     return (1);
+}
+
+void ft_putnbr(int nb)
+{
+    char c;
+
+    if (nb >= 10)
+        ft_putnbr(nb / 10);
+    c = nb % 10 + 48;
+    write(1, &c, 1);
 }
 
 int main(int argc, char **argv) 
