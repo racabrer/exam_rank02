@@ -46,23 +46,23 @@ int main (int argc, char **argv)
 
     if (argc > 1)
     {
-        while(ft_isspace(argv[1][i]))
+        while (ft_isspace(argv[1][i]))
             i++;
         start = i;
-        while(argv[1][i] && !ft_isspace(argv[1][i]))
+        while (argv[1][i] && !ft_isspace(argv[1][i]))
             i++;
         end = i;
         while (argv[1][i] && ft_isspace(argv[1][i]))
             i++;
-        while(argv[1][i])
+        while (argv[1][i])
         {
-            while( argv[1][i] && !ft_isspace(argv[1][i]))
+            while (argv[1][i] && !ft_isspace(argv[1][i]))
             {
                 write(1, &argv[1][i], 1);
                 i++;
                 printed = 1;
             }
-            while(argv[1][i] && ft_isspace(argv[1][i]))
+            while (argv[1][i] && ft_isspace(argv[1][i]))
                 i++;
             if (argv[1][i] && printed)
                 write(1, " ", 1);
@@ -71,7 +71,7 @@ int main (int argc, char **argv)
         {
             if (printed)
                 write(1, " ", 1);
-            while(start < end)
+            while (start < end)
                 write(1, &argv[1][start++], 1);
         }
     }
