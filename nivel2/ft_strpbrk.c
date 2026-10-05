@@ -51,7 +51,7 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 }
 
 /*
-Esta fusión busca en una cadena s1 el primer carácter que también esté presente en otra cadena s2,
+Esta función busca en una cadena s1 el primer carácter que también esté presente en otra cadena s2,
 si lo encuentra, devuelve un puntero a ese carácter dentro de s, si no lo encuentra, devuelve NULL
 Declaramos dos variables que son iteradores i y j
 Mientras s1[i]
