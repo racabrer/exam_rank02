@@ -91,19 +91,35 @@ char **ft_split(char *str)
 
 
 /*
-	Creamos una función auxiliar ft_strncpy (char	*ft_strncpy(char *s1, char *s2, int n)
-	para copiar "n" caracteres de s2 a s1.
-		Declaramos un iterador (i) para recorrer las cadenas (usamos el mismo para las dos).
-		Mientras que no se hayan copiado n caracteres y el carácter actual de s2 no sea nulo ('\0')
-		copiamos todos los caracteres de s2 a s1 (mientras que i sea menor que n y s2[i] exista)
-		(Esto garantiza que solo se copian hasta n caracteres y se detiene antes si s2 se acaba.)
-			Copia -> s1[i] = s2[i]
-			i++
-		s1[i] = '\0' (Añadimos '\0' al final de s1 para asegurarse que la cadena está bien terminada.)
-		return (s1) -> retorna un puntero al comienzo de s1.
+MAIN BÁSICO PARA PROBAR LA FUNCIÓN
+#include <stdio.h>
+
+int main(void)
+{
+    char **result;
+    int i;
+
+    result = ft_split("Hola mundo esto es una prueba");
+    i = 0;
+
+    while (result[i])
+        printf("%s\n", result[i++]);
+
+    return (0);
+}
+
+Creamos una función auxiliar ft_strncpy (char	*ft_strncpy(char *s1, char *s2, int n)
+para copiar "n" caracteres de s2 a s1.
+	Declaramos un iterador (i) para recorrer las cadenas (usamos el mismo para las dos).
+	Mientras que no se hayan copiado n caracteres y el carácter actual de s2 no sea nulo ('\0')
+	copiamos todos los caracteres de s2 a s1 (mientras que i sea menor que n y s2[i] exista)
+	(Esto garantiza que solo se copian hasta n caracteres y se detiene antes si s2 se acaba.)
+	Copia -> s1[i] = s2[i]
+		i++
+	s1[i] = '\0' (Añadimos '\0' al final de s1 para asegurarse que la cadena está bien terminada.)
+	return (s1) -> retorna un puntero al comienzo de s1.
 
 	FUNCIÓN PRINCIPAL:
-
 	char	**ft_split(char *str):
 	Declaramos 5 variables. 
 		int		word_count -> contador de palabras
@@ -115,7 +131,6 @@ char **ft_split(char *str)
 	Voy a dividir la función en bloques.
 
 	BLOQUE 1: Contamos las palabras
-
 	Recorremos str[i]
 		- Mientras que exista s1[i] y sea: " " || "\t" || "\n" 
 			- avanza i (i++)
@@ -125,7 +140,6 @@ char **ft_split(char *str)
 			- avanza i (i++)
 
 	BLOQUE 2:
-
 	Reiniciamos el iterador i a 0.
 	Asignamos espacio al array out -> tamaño word_count + 1. 
 	En este malloc necesitamos hacer un casteo previo ->
@@ -133,7 +147,6 @@ char **ft_split(char *str)
 	Comprobamos malloc
 
 	BLOQUE 3:
-
 	Recorremos str[i]
 		- Mientras exista str[i] y sea: " " || "\t" || "\n" 
 			- avanza en i (i++)
