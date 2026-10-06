@@ -26,15 +26,6 @@ seconD tesT A littlE biT   moaR compleX$
    but... thiS iS noT thaT compleX$
      okay, thiS iS thE lasT 1239809147801 buT noT    thE leasT    T$
 $>
-    Esta función comprueba si son carácteres, si lo son convierte todas las letras a minúscula menos el 
-    último carácter de cada palabra. Puede aceptar más de un argumento.
-    RESUMEN PASO A PASO:
-    Recorre cada cadena que se pasa por argumento
-    Convierte todas las letras a minúscula
-    Detecta la última letra de cada palabra (basado en que lo que sigue no es una letra)
-    Convierte solo esa última letra a mayúscula
-    Imprime todo con saltos de línea
-
 */
 
 #include <unistd.h>
