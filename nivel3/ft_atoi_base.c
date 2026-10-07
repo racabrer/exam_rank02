@@ -64,7 +64,7 @@ int is_hexa(int ch, int base_len)
     while (i < base_len)
     {
         if (ch == lcbase[i] || ch == ucbase[i])
-            return(1);
+            return (1);
         i++;
     }
     return (0);
@@ -76,9 +76,9 @@ int	ft_atoi_base(const char *str, int str_base)
     int sign = 1;
     int result = 0;
 
-    while(ft_isspace(str[i]))
+    while (ft_isspace(str[i]))
         i++;
-    while(str[i] == '+' || str[i] == '-')
+    while (str[i] == '+' || str[i] == '-')
     {
         if (str[i] == '-')
         {
@@ -98,7 +98,7 @@ int	ft_atoi_base(const char *str, int str_base)
             result = result * str_base + (str[i] - 'A' + 10);
         i++;
     }
-    return(result * sign);
+    return (result * sign);
 }
 
 
