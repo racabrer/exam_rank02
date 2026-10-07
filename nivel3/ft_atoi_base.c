@@ -55,7 +55,7 @@ int ft_isspace (char c)
     return (c == ' ' || c == '\t');
 }
 
-int is_hexa(int ch, int base_len)
+int is_hexa(int nb, int base_len)
 {
     char *lcbase= "0123456789abcdef";
     char *ucbase = "0123456789ABCDEF";
@@ -63,7 +63,7 @@ int is_hexa(int ch, int base_len)
 
     while (i < base_len)
     {
-        if (ch == lcbase[i] || ch == ucbase[i])
+        if (nb == lcbase[i] || nb == ucbase[i])
             return(1);
         i++;
     }
