@@ -33,12 +33,12 @@ int main(int argc, char **argv)
 
     if (argc == 3)
     {
-        while(argv[1][i])
+        while (argv[1][i])
         { 
             int j = 0;
-            while(argv[2][j])
+            while (argv[2][j])
             {  
-                while((argv[1][i] == argv[2][j]) && !lookup[(argv[1][i])])
+                while ((argv[1][i] == argv[2][j]) && !lookup[(argv[1][i])])
                 {
                     lookup[(argv[1][i])] = 1;
                     write(1, &argv[1][i], 1);
