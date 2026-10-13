@@ -52,9 +52,9 @@ int main (int argc, char **argv)
 
     if (argc == 2)
     {
-        while(ft_isspace(argv[1][i]))
+        while (ft_isspace(argv[1][i]))
             i++;
-        while(argv[1][i])
+        while (argv[1][i])
         {
             if (ft_isspace(argv[1][i]))
                 space = 1;
