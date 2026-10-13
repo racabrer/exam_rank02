@@ -30,7 +30,7 @@ int main (int argc, char **argv)
 
     if (argc == 3)
     {
-        while(argv[1][i])
+        while (argv[1][i])
         {
             if (argv[1][i] && !lookup[argv[1][i]])
             {
@@ -40,7 +40,7 @@ int main (int argc, char **argv)
             i++;
         }
         i = 0;
-        while(argv[2][i])
+        while (argv[2][i])
         {
             if (argv[2][i] && !lookup[argv[2][i]])
             {
