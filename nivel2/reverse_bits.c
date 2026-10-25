@@ -26,7 +26,7 @@ unsigned char	reverse_bits(unsigned char octet)
     unsigned char byte = 0;
     unsigned int i = 8;
 
-    while(i--)
+    while (i--)
     {
         byte = (byte << 1) | (octet & 1);
         octet = octet >> 1;
