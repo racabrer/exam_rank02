@@ -43,7 +43,7 @@ int main (int argc, char **argv)
         if (num1 == 0 || num2 == 0)
             return(0);
 
-        while(num2 != 0)
+        while (num2 != 0)
         {
             temp = num1 % num2;
             num1 = num2;
