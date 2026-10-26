@@ -57,6 +57,8 @@ Es importante manejar bien el caso de start > end.
 
 También asegúrate de incluir tanto el valor inicial como el final.
 */
+#include <stdlib.h>
+
 int *ft_range(int start, int end)
 {
     int size;
