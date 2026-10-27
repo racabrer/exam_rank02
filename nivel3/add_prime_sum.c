@@ -25,9 +25,9 @@ $>
 
 #include <unistd.h>
 
-int ft_isdigit(int c)
+int ft_isdigit(int n)
 {
-    return(c >= '0' && c <= '9');
+    return(n >= '0' && n <= '9');
 }
 
 int is_positive_number(char *str)
